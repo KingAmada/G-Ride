@@ -8,7 +8,9 @@
     <meta name="description" content="Premium, secure portal for Nigerian government staff vehicle booking and agency fleet coordination. Modern interface with map view, cost estimation, and easy registration.">
     <meta name="keywords" content="government car service nigeria, official travel nigeria, government transport, MDA vehicle booking, government logistics, fleet management nigeria, premium government service">
     <meta name="author" content="NGovRide Platform (Conceptual)">
-    <meta name="robots" content="noindex, nofollow"> <meta name="theme-color" content="#006633"> <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#006633">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,10 +19,11 @@
 
     <link rel="stylesheet" href="style.css">
 
-    </head>
+</head>
 <body>
 
-    <div id="view-homepage" class="view active"> <header class="homepage-header">
+    <div id="view-homepage" class="view active">
+        <header class="homepage-header">
             <div class="container">
                 <div class="logo">NGovRide</div>
                 <nav class="homepage-nav">
@@ -36,40 +39,21 @@
                     <button class="cta-button primary" onclick="showView('view-login')">Staff / Admin Login</button>
                 </div>
             </div>
-             <div class="hero-bg-overlay"></div> </section>
-
+             <div class="hero-bg-overlay"></div>
+        </section>
         <section class="features-section">
             <div class="container">
                 <h2 class="section-title">Facilitating Official Government Journeys</h2>
                 <div class="features-grid">
-                    <div class="feature-item">
-                         <div class="feature-icon meeting-icon"></div>
-                        <h3>Ministry Meetings</h3>
-                        <p>Book reliable transport across Abuja (or relevant city) for inter-agency meetings and official appointments.</p>
-                    </div>
-                    <div class="feature-item">
-                         <div class="feature-icon airport-icon"></div>
-                        <h3>Airport Transfers</h3>
-                        <p>Schedule timely and official pickups or drop-offs for staff undertaking authorized travel.</p>
-                    </div>
-                    <div class="feature-item">
-                         <div class="feature-icon field-icon"></div>
-                        <h3>Field Visits & Operations</h3>
-                        <p>Arrange necessary vehicles for essential site visits, project inspections, or community outreach programs.</p>
-                    </div>
-                     <div class="feature-item">
-                         <div class="feature-icon secure-icon-v2"></div>
-                        <h3>Secure & Accountable</h3>
-                        <p>Ensures platform access for verified staff only, tracks trip purpose, and utilizes official government drivers/vehicles.</p>
-                    </div>
+                    <div class="feature-item"> <div class="feature-icon meeting-icon"></div> <h3>Ministry Meetings</h3> <p>Book reliable transport across Abuja (or relevant city) for inter-agency meetings and official appointments.</p> </div>
+                    <div class="feature-item"> <div class="feature-icon airport-icon"></div> <h3>Airport Transfers</h3> <p>Schedule timely and official pickups or drop-offs for staff undertaking authorized travel.</p> </div>
+                    <div class="feature-item"> <div class="feature-icon field-icon"></div> <h3>Field Visits & Operations</h3> <p>Arrange necessary vehicles for essential site visits, project inspections, or community outreach programs.</p> </div>
+                     <div class="feature-item"> <div class="feature-icon secure-icon-v2"></div> <h3>Secure & Accountable</h3> <p>Ensures platform access for verified staff only, tracks trip purpose, and utilizes official government drivers/vehicles.</p> </div>
                 </div>
             </div>
         </section>
-
         <footer class="homepage-footer">
-            <div class="container">
-                <p>&copy; <script>document.write(new Date().getFullYear())</script> NGovRide Platform (Conceptual). Federal Government of Nigeria.</p>
-            </div>
+            <div class="container"> <p>&copy; <script>document.write(new Date().getFullYear())</script> NGovRide Platform (Conceptual). Federal Government of Nigeria.</p> </div>
         </footer>
     </div>
 
@@ -77,121 +61,47 @@
         <div class="auth-container animation-fadeIn">
             <div class="auth-logo">NGovRide</div>
             <h2>Staff & Admin Login</h2>
-            <form id="login-form" class="auth-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="login-email">Official Email</label>
-                    <input type="email" id="login-email" name="email" required placeholder="e.g., user@agency.gov.ng">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" name="password" required>
-                </div>
+            <form id="login-form" class="auth-form">
+                <div class="form-group"> <label for="login-email">Official Email</label> <input type="email" id="login-email" name="email" required placeholder="e.g., user@agency.gov.ng"> </div>
+                <div class="form-group"> <label for="login-password">Password</label> <input type="password" id="login-password" name="password" required> </div>
                 <button type="submit" class="auth-button gradient-button"><span>Login</span></button>
             </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-register-staff')">Register as Staff</a> |
-                <a href="#" onclick="showView('view-register-agency')">Register Agency</a>
-                 <br> <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
+            <div class="auth-links"> <a href="#" onclick="showView('view-register-staff')">Register as Staff</a> | <a href="#" onclick="showView('view-register-agency')">Register Agency</a> <br> <a href="#" class="forgot-password">Forgot Password?</a> </div>
         </div>
     </div>
 
     <div id="view-register-staff" class="view">
         <div class="auth-container animation-slideInUp">
             <h2>Staff Registration</h2>
-            <form id="register-staff-form" class="auth-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="staff-name">Full Name</label>
-                    <input type="text" id="staff-name" name="fullname" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-email">Official Email Address</label>
-                    <input type="email" id="staff-email" name="email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address">
-                    <small>Must end with .gov.ng</small>
-                </div>
-                <div class="form-group">
-                    <label for="staff-phone">Phone Number</label>
-                    <input type="tel" id="staff-phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-agency">Ministry / Department / Agency</label>
-                    <select id="staff-agency" name="agency" required>
-                        <option value="" disabled selected>-- Select Your Agency --</option>
-                        <option value="Federal Ministry of Finance">Federal Ministry of Finance</option>
-                        <option value="Federal Ministry of Works">Federal Ministry of Works</option>
-                        <option value="Federal Ministry of Health">Federal Ministry of Health</option>
-                        <option value="NITDA">NITDA</option>
-                        <option value="FIRS">FIRS</option>
-                        <option value="CAC">CAC</option>
-                        <option value="Nigeria Customs Service">Nigeria Customs Service</option>
-                        </select>
-                </div>
-                <div class="form-group">
-                    <label for="staff-id">Staff ID Number</label>
-                    <input type="text" id="staff-id" name="staff_id" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-password">Password</label>
-                    <input type="password" id="staff-password" name="password" required minlength="8">
-                    <small>Minimum 8 characters</small>
-                </div>
-                <div class="form-group">
-                    <label for="staff-confirm-password">Confirm Password</label>
-                    <input type="password" id="staff-confirm-password" name="confirm_password" required>
-                </div>
+            <form id="register-staff-form" class="auth-form">
+                <div class="form-group"> <label for="staff-name">Full Name</label> <input type="text" id="staff-name" name="fullname" required> </div>
+                <div class="form-group"> <label for="staff-email">Official Email Address</label> <input type="email" id="staff-email" name="email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address"> <small>Must end with .gov.ng</small> </div>
+                <div class="form-group"> <label for="staff-phone">Phone Number</label> <input type="tel" id="staff-phone" name="phone" required> </div>
+                <div class="form-group"> <label for="staff-agency">Ministry / Department / Agency</label> <select id="staff-agency" name="agency" required> <option value="" disabled selected>-- Select Your Agency --</option> <option value="Federal Ministry of Finance">Federal Ministry of Finance</option> <option value="Federal Ministry of Works">Federal Ministry of Works</option> <option value="Federal Ministry of Health">Federal Ministry of Health</option> <option value="NITDA">NITDA</option> <option value="FIRS">FIRS</option> <option value="CAC">CAC</option> <option value="Nigeria Customs Service">Nigeria Customs Service</option> </select> </div>
+                <div class="form-group"> <label for="staff-id">Staff ID Number</label> <input type="text" id="staff-id" name="staff_id" required> </div>
+                <div class="form-group"> <label for="staff-password">Password</label> <input type="password" id="staff-password" name="password" required minlength="8"> <small>Minimum 8 characters</small> </div>
+                <div class="form-group"> <label for="staff-confirm-password">Confirm Password</label> <input type="password" id="staff-confirm-password" name="confirm_password" required> </div>
                 <button type="submit" class="auth-button gradient-button"><span>Register Staff</span></button>
             </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a>
-            </div>
+            <div class="auth-links"> <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a> </div>
         </div>
     </div>
 
     <div id="view-register-agency" class="view">
         <div class="auth-container animation-slideInUp">
             <h2>Agency Admin Registration</h2>
-            <form id="register-agency-form" class="auth-form" action="#" method="POST">
-                <div class="form-group">
-                    <label for="agency-name">Ministry / Department / Agency Name</label>
-                    <input type="text" id="agency-name" name="agency_name" required autocomplete="off">
-                    <div id="agency-suggestions" class="suggestions-dropdown"></div> <small>Select existing or type new name</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-name">Administrator Full Name</label>
-                    <input type="text" id="agency-admin-name" name="admin_name" required>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-email">Administrator Official Email</label>
-                    <input type="email" id="agency-admin-email" name="admin_email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address">
-                     <small>Must end with .gov.ng</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-phone">Administrator Phone Number</label>
-                    <input type="tel" id="agency-admin-phone" name="admin_phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="agency-address">Official Address</label>
-                    <textarea id="agency-address" name="agency_address" rows="2" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="agency-billing">Billing Contact / Info (Placeholder)</label>
-                    <input type="text" id="agency-billing" name="billing_info" required placeholder="Contact for billing inquiries">
-                     <small>Details handled securely via backend.</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-password">Admin Account Password</label>
-                    <input type="password" id="agency-password" name="password" required minlength="8">
-                    <small>Minimum 8 characters</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-confirm-password">Confirm Password</label>
-                    <input type="password" id="agency-confirm-password" name="confirm_password" required>
-                </div>
+            <form id="register-agency-form" class="auth-form">
+                <div class="form-group"> <label for="agency-name">Ministry / Department / Agency Name</label> <input type="text" id="agency-name" name="agency_name" required autocomplete="off"> <div id="agency-suggestions" class="suggestions-dropdown"></div> <small>Select existing or type new name</small> </div>
+                <div class="form-group"> <label for="agency-admin-name">Administrator Full Name</label> <input type="text" id="agency-admin-name" name="admin_name" required> </div>
+                <div class="form-group"> <label for="agency-admin-email">Administrator Official Email</label> <input type="email" id="agency-admin-email" name="admin_email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address"> <small>Must end with .gov.ng</small> </div>
+                <div class="form-group"> <label for="agency-admin-phone">Administrator Phone Number</label> <input type="tel" id="agency-admin-phone" name="admin_phone" required> </div>
+                <div class="form-group"> <label for="agency-address">Official Address</label> <textarea id="agency-address" name="agency_address" rows="2" required></textarea> </div>
+                <div class="form-group"> <label for="agency-billing">Billing Contact / Info (Placeholder)</label> <input type="text" id="agency-billing" name="billing_info" required placeholder="Contact for billing inquiries"> <small>Details handled securely via backend.</small> </div>
+                <div class="form-group"> <label for="agency-password">Admin Account Password</label> <input type="password" id="agency-password" name="password" required minlength="8"> <small>Minimum 8 characters</small> </div>
+                <div class="form-group"> <label for="agency-confirm-password">Confirm Password</label> <input type="password" id="agency-confirm-password" name="confirm_password" required> </div>
                 <button type="submit" class="auth-button gradient-button"><span>Register Agency Admin</span></button>
             </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a>
-            </div>
+            <div class="auth-links"> <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a> </div>
         </div>
     </div>
 
@@ -200,84 +110,38 @@
             <div class="container">
                 <div class="logo" style="cursor: pointer;" title="Logout" onclick="logout()">NGovRide</div>
                 <div class="user-info">
-                    <div id="user-photo-container" class="profile-photo-placeholder" title="Click to change photo">
-                        <input type="file" id="photo-upload" accept="image/*" style="display: none;">
-                    </div>
-                    <span id="user-display-name">User Name</span> <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button> </div>
+                    <div id="user-photo-container" class="profile-photo-placeholder" title="Click to change photo"> <input type="file" id="photo-upload" accept="image/*" style="display: none;"> </div>
+                    <span id="user-display-name">User Name</span> <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button>
+                </div>
             </div>
         </header>
-
         <main class="main-booking-layout">
-            <div id="map">
-                 <div id="loading-indicator">Locating...</div>
-                 <div id="map-instructions">Enter addresses above or click map</div>
-            </div>
+            <div id="map"> <div id="loading-indicator">Locating...</div> <div id="map-instructions">Enter addresses above or click map</div> </div>
             <div class="ride-panel">
-                 <div class="panel-tabs">
-                    <button id="tab-book" class="active" onclick="showPanel('booking')">Book Ride</button>
-                    <button id="tab-trips" onclick="showPanel('trips')">My Trips</button>
-                </div>
-                <div id="panel-booking" class="panel-content active">
+                 <div class="panel-tabs"> <button id="tab-book" class="active" onclick="showPanel('booking')">Book Ride</button> <button id="tab-trips" onclick="showPanel('trips')">My Trips</button> </div>
+                 <div id="panel-booking" class="panel-content active">
                    <section class="booking-form" aria-labelledby="booking-heading">
                         <h2 id="booking-heading" class="sr-only">Book a Ride</h2>
-                        <form id="booking-form" action="#" method="POST">
-                             <div class="form-group input-with-icon animated-input">
-                                <span class="input-icon pickup-icon"></span>
-                                <input type="text" id="pickup-address" name="pickup_address" required placeholder="Pickup Address">
-                                <button type="button" id="locate-btn" class="locate-button" title="Use Current Location">&#x1F4CD;</button>
-                            </div>
-                             <div class="form-group input-with-icon animated-input">
-                                <span class="input-icon dest-icon"></span>
-                                <input type="text" id="destination-address" name="destination_address" required placeholder="Destination Address">
-                            </div>
-                             <div class="split-group">
-                                <div class="form-group input-with-icon animated-input">
-                                    <span class="input-icon calendar-icon"></span>
-                                    <input type="datetime-local" id="trip-datetime" name="trip_datetime" required title="Select trip date and time">
-                                </div>
-                                <div class="form-group input-with-icon animated-input">
-                                    <span class="input-icon passenger-icon"></span>
-                                    <input type="number" id="passengers" name="passengers" required min="1" max="15" placeholder="Passengers" title="Number of Passengers (1-15)">
-                                </div>
-                             </div>
-                             <div class="form-group input-with-icon animated-input">
-                                 <span class="input-icon car-icon"></span>
-                                <select id="vehicle-type" name="vehicle_type" title="Select preferred vehicle type">
-                                    <option value="" disabled selected>Vehicle Type (Optional)</option>
-                                    <option value="any">Any Available</option>
-                                    <option value="sedan">Sedan Car (1-3)</option>
-                                    <option value="suv">SUV (4-6)</option>
-                                    <option value="bus">Bus (7-15)</option>
-                                </select>
-                            </div>
-                            <div class="form-group animated-input">
-                                <textarea id="trip-purpose" name="trip_purpose" rows="2" required placeholder="Purpose of Trip"></textarea>
-                            </div>
-                             <div class="form-group animated-input">
-                                <textarea id="trip-notes" name="trip_notes" rows="2" placeholder="Special Instructions / Notes (Optional)"></textarea>
-                            </div>
-                            <div class="estimation-box">
-                                <div>Distance: <span id="est-distance">--</span> km</div>
-                                <div>Est. Cost: <strong id="est-cost">--</strong></div>
-                                <small>(Based on straight-line distance & demo rate)</small>
-                            </div>
-                            <button type="submit" class="auth-button gradient-button submit-button"><span>Confirm & Request Ride</span></button>
+                        <form id="booking-form">
+                             <div class="form-group input-with-icon animated-input"> <span class="input-icon pickup-icon"></span> <input type="text" id="pickup-address" name="pickup_address" required placeholder="Pickup Address"> <button type="button" id="locate-btn" class="locate-button" title="Use Current Location">&#x1F4CD;</button> </div>
+                             <div class="form-group input-with-icon animated-input"> <span class="input-icon dest-icon"></span> <input type="text" id="destination-address" name="destination_address" required placeholder="Destination Address"> </div>
+                             <div class="split-group"> <div class="form-group input-with-icon animated-input"> <span class="input-icon calendar-icon"></span> <input type="datetime-local" id="trip-datetime" name="trip_datetime" required title="Select trip date and time"> </div> <div class="form-group input-with-icon animated-input"> <span class="input-icon passenger-icon"></span> <input type="number" id="passengers" name="passengers" required min="1" max="15" placeholder="Passengers" title="Number of Passengers (1-15)"> </div> </div>
+                             <div class="form-group input-with-icon animated-input"> <span class="input-icon car-icon"></span> <select id="vehicle-type" name="vehicle_type" title="Select preferred vehicle type"> <option value="" disabled selected>Vehicle Type (Optional)</option> <option value="any">Any Available</option> <option value="sedan">Sedan Car (1-3)</option> <option value="suv">SUV (4-6)</option> <option value="bus">Bus (7-15)</option> </select> </div>
+                             <div class="form-group animated-input"> <textarea id="trip-purpose" name="trip_purpose" rows="2" required placeholder="Purpose of Trip"></textarea> </div>
+                             <div class="form-group animated-input"> <textarea id="trip-notes" name="trip_notes" rows="2" placeholder="Special Instructions / Notes (Optional)"></textarea> </div>
+                             <div class="estimation-box"> <div>Distance: <span id="est-distance">--</span> km</div> <div>Est. Cost: <strong id="est-cost">--</strong></div> <small>(Based on route distance & demo rate)</small> </div>
+                             <button type="submit" class="auth-button gradient-button submit-button"><span>Confirm & Request Ride</span></button>
                         </form>
                     </section>
-                </div>
-                <div id="panel-trips" class="panel-content">
-                   <section class="trip-history" aria-labelledby="trip-history-heading">
-                        <h2 id="trip-history-heading" class="sr-only">Trip History</h2>
-                        <div class="trip-list">
-                            <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Min. of Works <strong>To:</strong> Aso Villa</div> <div class="trip-datetime">Apr 05, 2025 - 10:00 AM</div> </div> <div class="trip-status upcoming">Upcoming</div> </article>
-                            <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Fed. Secretariat <strong>To:</strong> Airport</div> <div class="trip-datetime">Mar 28, 2025 - 02:30 PM</div> </div> <div class="trip-status completed">Completed</div> </article>
-                            <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> NITDA HQ <strong>To:</strong> Min. of Comms</div> <div class="trip-datetime">Mar 30, 2025 - 03:45 PM</div> </div> <div class="trip-status inprogress">In Progress</div> </article>
-                            <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Home Address <strong>To:</strong> Office</div> <div class="trip-datetime">Mar 25, 2025 - 08:00 AM</div> </div> <div class="trip-status cancelled">Cancelled</div> </article>
-                        </div>
-                    </section>
-                </div>
-            </div> </main>
-    </div> <div id="view-agency-dashboard" class="view">
+                 </div>
+                 <div id="panel-trips" class="panel-content">
+                   <section class="trip-history" aria-labelledby="trip-history-heading"> <h2 id="trip-history-heading" class="sr-only">Trip History</h2> <div class="trip-list"> <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Min. of Works <strong>To:</strong> Aso Villa</div> <div class="trip-datetime">Apr 05, 2025 - 10:00 AM</div> </div> <div class="trip-status upcoming">Upcoming</div> </article> <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Fed. Secretariat <strong>To:</strong> Airport</div> <div class="trip-datetime">Mar 28, 2025 - 02:30 PM</div> </div> <div class="trip-status completed">Completed</div> </article> <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> NITDA HQ <strong>To:</strong> Min. of Comms</div> <div class="trip-datetime">Mar 30, 2025 - 03:45 PM</div> </div> <div class="trip-status inprogress">In Progress</div> </article> <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Home Address <strong>To:</strong> Office</div> <div class="trip-datetime">Mar 25, 2025 - 08:00 AM</div> </div> <div class="trip-status cancelled">Cancelled</div> </article> </div> </section>
+                 </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="view-agency-dashboard" class="view">
         <header class="site-header">
             <div class="container">
                 <div class="logo" style="cursor: pointer;" title="Logout" onclick="logout()">NGovRide Admin</div>
@@ -288,7 +152,6 @@
                 </div>
             </div>
         </header>
-
         <div class="dashboard-layout">
             <aside class="dashboard-sidebar">
                 <nav class="sidebar-nav">
@@ -299,77 +162,43 @@
                         <li><a href="#" onclick="showDashboardSection('dashboard-staff', this)"><span class="nav-icon staff-icon"></span> Manage Staff</a></li>
                         <li><a href="#" onclick="showDashboardSection('dashboard-reports', this)"><span class="nav-icon reports-icon"></span> Reports</a></li>
                         <li><a href="#" onclick="showDashboardSection('dashboard-settings', this)"><span class="nav-icon settings-icon"></span> Settings</a></li>
-                         </ul>
+                    </ul>
                 </nav>
             </aside>
-
             <main class="dashboard-main">
                 <section id="dashboard-overview" class="dashboard-section active">
                     <h2>Agency Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card"> <h4>Pending Requests</h4> <p class="stat-value">5</p> <small>Awaiting Action</small> </div>
-                        <div class="stat-card"> <h4>Active Trips</h4> <p class="stat-value">2</p> <small>Currently In Progress</small> </div>
-                        <div class="stat-card"> <h4>Trips Today</h4> <p class="stat-value">14</p> <small>Completed</small> </div>
-                        <div class="stat-card"> <h4>Active Staff</h4> <p class="stat-value">48</p> <small>Authorized Users</small> </div>
-                    </div>
+                    <div class="stats-grid"> <div class="stat-card"> <h4>Pending Requests</h4> <p class="stat-value">5</p> <small>Awaiting Action</small> </div> <div class="stat-card"> <h4>Active Trips</h4> <p class="stat-value">2</p> <small>Currently In Progress</small> </div> <div class="stat-card"> <h4>Trips Today</h4> <p class="stat-value">14</p> <small>Completed</small> </div> <div class="stat-card"> <h4>Active Staff</h4> <p class="stat-value">48</p> <small>Authorized Users</small> </div> </div>
                     <div class="placeholder-widget">Chart Placeholder: Trip Volume (Requires Charting Library & Data)</div>
                 </section>
-
                 <section id="dashboard-requests" class="dashboard-section">
                     <h2>Manage Trip Requests</h2>
                     <div class="controls"> <input type="search" placeholder="Search requests..."> <select><option>Filter by Status</option><option>Pending</option><option>Approved</option></select> </div>
-                    <div class="table-container">
-                        <table>
-                            <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Action</th></tr> </thead>
-                            <tbody>
-                                <tr><td>Aisha Bello</td><td>Min. of Finance</td><td>CBN HQ</td><td>2025-04-01 10:00</td><td>Budget Meeting</td><td><span class="status-badge pending">Pending</span></td><td><button class="action-btn approve">Approve</button><button class="action-btn reject">Reject</button></td></tr>
-                                <tr><td>Chinedu Okoro</td><td>Fed Secretariat</td><td>Airport</td><td>2025-04-01 14:00</td><td>Official Travel</td><td><span class="status-badge approved">Approved</span></td><td><button class="action-btn view">View</button></td></tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <div class="table-container"> <table> <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Action</th></tr> </thead> <tbody> <tr><td>Aisha Bello</td><td>Min. of Finance</td><td>CBN HQ</td><td>2025-04-01 10:00</td><td>Budget Meeting</td><td><span class="status-badge pending">Pending</span></td><td><button class="action-btn approve">Approve</button><button class="action-btn reject">Reject</button></td></tr> <tr><td>Chinedu Okoro</td><td>Fed Secretariat</td><td>Airport</td><td>2025-04-01 14:00</td><td>Official Travel</td><td><span class="status-badge approved">Approved</span></td><td><button class="action-btn view">View</button></td></tr> </tbody> </table> </div>
                 </section>
-
                 <section id="dashboard-trips" class="dashboard-section">
                     <h2>Trip History</h2>
                      <div class="controls"> <input type="search" placeholder="Search trips..."> <input type="date"> <select><option>Filter by Status</option><option>Completed</option><option>Cancelled</option></select> </div>
-                    <div class="table-container">
-                        <table>
-                             <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Details</th></tr> </thead>
-                             <tbody> <tr><td>Binta Mohammed</td><td>NITDA</td><td>Min. of Comms</td><td>2025-03-30 15:00</td><td>Stakeholder Mtg</td><td><span class="status-badge completed">Completed</span></td><td><button class="action-btn view">View</button></td></tr> </tbody>
-                        </table>
-                    </div>
+                    <div class="table-container"> <table> <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Details</th></tr> </thead> <tbody> <tr><td>Binta Mohammed</td><td>NITDA</td><td>Min. of Comms</td><td>2025-03-30 15:00</td><td>Stakeholder Mtg</td><td><span class="status-badge completed">Completed</span></td><td><button class="action-btn view">View</button></td></tr> </tbody> </table> </div>
                 </section>
-
                 <section id="dashboard-staff" class="dashboard-section">
                     <h2>Manage Agency Staff</h2>
                      <div class="controls"> <input type="search" placeholder="Search staff..."> <button class="action-btn add-new">Add New Staff</button> </div>
-                     <div class="table-container">
-                        <table>
-                             <thead> <tr><th>Name</th><th>Email</th><th>Staff ID</th><th>Status</th><th>Action</th></tr> </thead>
-                             <tbody>
-                                <tr><td>Aisha Bello</td><td>a.bello@finance.gov.ng</td><td>FIN/101</td><td><span class="status-badge active">Active</span></td><td><button class="action-btn edit">Edit</button><button class="action-btn deactivate">Deactivate</button></td></tr>
-                                <tr><td>Chinedu Okoro</td><td>c.okoro@finance.gov.ng</td><td>FIN/102</td><td><span class="status-badge active">Active</span></td><td><button class="action-btn edit">Edit</button><button class="action-btn deactivate">Deactivate</button></td></tr>
-                             </tbody>
-                        </table>
-                    </div>
+                     <div class="table-container"> <table> <thead> <tr><th>Name</th><th>Email</th><th>Staff ID</th><th>Status</th><th>Action</th></tr> </thead> <tbody> <tr><td>Aisha Bello</td><td>a.bello@finance.gov.ng</td><td>FIN/101</td><td><span class="status-badge active">Active</span></td><td><button class="action-btn edit">Edit</button><button class="action-btn deactivate">Deactivate</button></td></tr> <tr><td>Chinedu Okoro</td><td>c.okoro@finance.gov.ng</td><td>FIN/102</td><td><span class="status-badge active">Active</span></td><td><button class="action-btn edit">Edit</button><button class="action-btn deactivate">Deactivate</button></td></tr> </tbody> </table> </div>
                 </section>
-
                  <section id="dashboard-reports" class="dashboard-section">
                     <h2>Reports & Analytics</h2>
                     <div class="placeholder-widget">Reporting dashboard placeholder. Requires backend data aggregation and potentially charting libraries.</div>
                 </section>
-
                 <section id="dashboard-settings" class="dashboard-section">
                     <h2>Agency Settings</h2>
-                     <div class="settings-form">
-                         <div class="form-group"> <label>Agency Name</label> <input type="text" value="Federal Ministry of Finance" disabled> </div>
-                         <div class="form-group"> <label>Primary Admin Contact</label> <input type="text" value="Admin Name" > </div>
-                         <div class="form-group"> <label>Notification Preferences</label> <label><input type="checkbox" checked> Email on New Request</label> <label><input type="checkbox"> Email on Trip Completion</label> </div>
-                         <button class="auth-button gradient-button"><span>Save Settings</span></button>
-                     </div>
+                     <div class="settings-form"> <div class="form-group"> <label>Agency Name</label> <input type="text" value="Federal Ministry of Finance" disabled> </div> <div class="form-group"> <label>Primary Admin Contact</label> <input type="text" value="Admin Name" > </div> <div class="form-group"> <label>Notification Preferences</label> <label><input type="checkbox" checked> Email on New Request</label> <label><input type="checkbox"> Email on Trip Completion</label> </div> <button class="auth-button gradient-button"><span>Save Settings</span></button> </div>
                 </section>
+            </main>
+        </div>
+    </div>
 
-            </main> </div> </div> <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBntUnZnhodtQ_mPHXjOC5CVhM1T5JC6y0&libraries=places,geometry,geocoding&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBntUnZnhodtQ_mPHXjOC5CVhM1T5JC6y0&libraries=places,geometry,geocoding&callback=initMap" async defer></script>
 
     <script src="script.js"></script>
 
