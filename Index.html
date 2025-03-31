@@ -11,15 +11,13 @@
     <meta name="robots" content="noindex, nofollow"> <meta name="theme-color" content="#006633"> <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 
-</head>
+    </head>
 <body>
 
     <div id="view-homepage" class="view active"> <header class="homepage-header">
@@ -77,7 +75,7 @@
 
     <div id="view-login" class="view">
         <div class="auth-container animation-fadeIn">
-             <div class="auth-logo">NGovRide</div>
+            <div class="auth-logo">NGovRide</div>
             <h2>Staff & Admin Login</h2>
             <form id="login-form" class="auth-form" action="#" method="POST">
                 <div class="form-group">
@@ -211,18 +209,16 @@
 
         <main class="main-booking-layout">
             <div id="map">
-                <div id="loading-indicator">Locating...</div>
-                 <div id="map-instructions">Click map to set pickup/destination or use address fields</div>
+                 <div id="loading-indicator">Locating...</div>
+                 <div id="map-instructions">Enter addresses above or click map</div>
             </div>
-
             <div class="ride-panel">
-                <div class="panel-tabs">
+                 <div class="panel-tabs">
                     <button id="tab-book" class="active" onclick="showPanel('booking')">Book Ride</button>
                     <button id="tab-trips" onclick="showPanel('trips')">My Trips</button>
                 </div>
-
                 <div id="panel-booking" class="panel-content active">
-                    <section class="booking-form" aria-labelledby="booking-heading">
+                   <section class="booking-form" aria-labelledby="booking-heading">
                         <h2 id="booking-heading" class="sr-only">Book a Ride</h2>
                         <form id="booking-form" action="#" method="POST">
                              <div class="form-group input-with-icon animated-input">
@@ -260,20 +256,17 @@
                              <div class="form-group animated-input">
                                 <textarea id="trip-notes" name="trip_notes" rows="2" placeholder="Special Instructions / Notes (Optional)"></textarea>
                             </div>
-
                             <div class="estimation-box">
                                 <div>Distance: <span id="est-distance">--</span> km</div>
                                 <div>Est. Cost: <strong id="est-cost">--</strong></div>
                                 <small>(Based on straight-line distance & demo rate)</small>
                             </div>
-
                             <button type="submit" class="auth-button gradient-button submit-button"><span>Confirm & Request Ride</span></button>
                         </form>
                     </section>
                 </div>
-
                 <div id="panel-trips" class="panel-content">
-                    <section class="trip-history" aria-labelledby="trip-history-heading">
+                   <section class="trip-history" aria-labelledby="trip-history-heading">
                         <h2 id="trip-history-heading" class="sr-only">Trip History</h2>
                         <div class="trip-list">
                             <article class="trip-card"> <div class="trip-icon"></div> <div class="trip-details"> <div class="trip-locations"><strong>From:</strong> Min. of Works <strong>To:</strong> Aso Villa</div> <div class="trip-datetime">Apr 05, 2025 - 10:00 AM</div> </div> <div class="trip-status upcoming">Upcoming</div> </article>
@@ -324,10 +317,7 @@
 
                 <section id="dashboard-requests" class="dashboard-section">
                     <h2>Manage Trip Requests</h2>
-                    <div class="controls">
-                        <input type="search" placeholder="Search by staff name or destination...">
-                        <select><option>Filter by Status (All)</option><option>Pending</option><option>Approved</option></select>
-                    </div>
+                    <div class="controls"> <input type="search" placeholder="Search requests..."> <select><option>Filter by Status</option><option>Pending</option><option>Approved</option></select> </div>
                     <div class="table-container">
                         <table>
                             <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Action</th></tr> </thead>
@@ -341,7 +331,7 @@
 
                 <section id="dashboard-trips" class="dashboard-section">
                     <h2>Trip History</h2>
-                     <div class="controls"> <input type="search" placeholder="Search trips..."> <input type="date"> <select><option>Filter by Status (All)</option><option>Completed</option><option>Cancelled</option></select> </div>
+                     <div class="controls"> <input type="search" placeholder="Search trips..."> <input type="date"> <select><option>Filter by Status</option><option>Completed</option><option>Cancelled</option></select> </div>
                     <div class="table-container">
                         <table>
                              <thead> <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Details</th></tr> </thead>
@@ -352,7 +342,7 @@
 
                 <section id="dashboard-staff" class="dashboard-section">
                     <h2>Manage Agency Staff</h2>
-                     <div class="controls"> <input type="search" placeholder="Search staff by name or email..."> <button class="action-btn add-new">Add New Staff</button> </div>
+                     <div class="controls"> <input type="search" placeholder="Search staff..."> <button class="action-btn add-new">Add New Staff</button> </div>
                      <div class="table-container">
                         <table>
                              <thead> <tr><th>Name</th><th>Email</th><th>Staff ID</th><th>Status</th><th>Action</th></tr> </thead>
@@ -366,7 +356,7 @@
 
                  <section id="dashboard-reports" class="dashboard-section">
                     <h2>Reports & Analytics</h2>
-                    <div class="placeholder-widget">Reporting dashboard placeholder. Requires backend data aggregation and potentially charting libraries. Could include: Trips per user, Departmental usage, Peak hour analysis, Cost summaries etc.</div>
+                    <div class="placeholder-widget">Reporting dashboard placeholder. Requires backend data aggregation and potentially charting libraries.</div>
                 </section>
 
                 <section id="dashboard-settings" class="dashboard-section">
@@ -379,7 +369,7 @@
                      </div>
                 </section>
 
-            </main> </div> </div> <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+            </main> </div> </div> <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBntUnZnhodtQ_mPHXjOC5CVhM1T5JC6y0&libraries=places,geometry,geocoding&callback=initMap" async defer></script>
 
     <script src="script.js"></script>
 
