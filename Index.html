@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>NGovRide - Single-Page Demo</title>
-    <meta name="description" content="NGovRide single-page demo with homepage, login, registration, booking, and agency dashboard views.">
-    <meta name="keywords" content="govride, single page, booking, agency dashboard, etc">
-    <meta name="author" content="NGovRide (Concept Demo)">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="theme-color" content="#006633">
+  <title>NGovRide - All-In-One Demo</title>
+  <meta name="description" content="A single-page NGovRide demo with homepage, login, registrations, booking with map and car search, plus agency dashboard.">
+  <meta name="author" content="NGovRide Conceptual Demo">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#006633">
 
-    <!-- Example Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Using Poppins as in previous examples -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Google Font (Poppins) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link 
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" 
+    rel="stylesheet"
+  >
 
-    <style>
-    /* --------------------
+  <style>
+    /* ----------------------------------------
        GLOBAL / RESET
-    -------------------- */
+    ---------------------------------------- */
     *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0; 
-      padding: 0;
+      box-sizing: border-box; margin: 0; padding: 0;
     }
     html {
-      scroll-behavior: smooth;
+      scroll-behavior: smooth; 
       font-size: 16px;
     }
     body {
@@ -39,57 +39,35 @@
       display: flex;
       flex-direction: column;
     }
-    a {
-      text-decoration: none;
-      color: #006633;
-      transition: color 0.3s ease;
-    }
-    a:hover {
-      color: #004d26;
-      text-decoration: underline;
-    }
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: #006633; transition: color 0.3s ease; }
+    a:hover { color: #004d26; text-decoration: underline; }
 
-    /* 
-      Each "page" is a .view container. 
-      Only one is visible at a time (the one with .active). 
-    */
-    .view {
-      display: none;
-      width: 100%;
-      flex-grow: 1;
-    }
-    .view.active {
-      display: block; /* or flex if you prefer */
-    }
+    /* Each "page" is .view. Show only if .active. */
+    .view { display: none; width: 100%; flex-grow: 1; }
+    .view.active { display: flex; flex-direction: column; }
 
-    /* Basic top nav for switching views */
+    /* Top Navigation */
     .top-nav {
       background: #006633;
       padding: 1rem;
       text-align: center;
     }
     .top-nav a {
-      color: #fff;
-      margin: 0 0.75rem;
-      text-decoration: none;
-      font-weight: 500;
+      color: #fff; 
+      margin: 0 0.75rem; 
+      text-decoration: none; 
+      font-weight: 500; 
       cursor: pointer;
     }
     .top-nav a:hover {
       text-decoration: underline;
     }
 
-    /* --------------------
-       HOMEPAGE SECTION
-    -------------------- */
-    #view-homepage {
-      background-color: #fff; 
-    }
+    /* ----------------------------------------
+       HOMEPAGE
+    ---------------------------------------- */
+    #view-homepage { background-color: #fff; }
     .hero-section {
       min-height: 70vh; 
       display: flex; 
@@ -98,20 +76,8 @@
       text-align: center; 
       padding: 60px 20px; 
       position: relative; 
-      overflow: hidden;
+      overflow: hidden; 
       background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
-    }
-    .hero-bg-overlay {
-      position: absolute; 
-      top: 0; left: 0; right: 0; bottom: 0; 
-      background: linear-gradient(rgba(0, 102, 51, 0.1), rgba(0, 51, 25, 0.3));
-      z-index: 1;
-    }
-    .hero-section .container {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 0 auto;
     }
     .hero-headline {
       font-size: 2.8rem;
@@ -120,88 +86,62 @@
       line-height: 1.2;
       margin-bottom: 1rem;
     }
-    .hero-tagline {
-      font-size: 1.1rem;
-      color: #444;
-      margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .hero-cta .cta-button {
+    .cta-button.primary {
       padding: 15px 35px; 
       font-size: 1.1rem; 
       font-weight: 600; 
       border-radius: 8px; 
       border: none; 
-      cursor: pointer; 
-      transition: all 0.3s ease; 
-      margin: 0.5rem; 
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .hero-cta .cta-button.primary {
+      cursor: pointer;
       background: linear-gradient(135deg, #00773B 0%, #00592C 100%);
       color: white;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
     }
-    .hero-cta .cta-button.primary:hover {
-      transform: translateY(-3px);
+    .cta-button.primary:hover {
+      transform: translateY(-3px); 
       box-shadow: 0 6px 15px rgba(0, 102, 51, 0.2);
     }
 
     .features-section {
       padding: 60px 0 80px 0; 
-      background-color: #ffffff;
+      background-color: #ffffff; 
+      text-align: center;
     }
     .features-section .section-title {
-      text-align: center; 
       font-size: 2rem; 
       font-weight: 700; 
       color: #00592C; 
       margin-bottom: 3.5rem;
     }
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2.5rem;
-      width: 95%;
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 2.5rem; 
       max-width: 1200px;
       margin: 0 auto;
     }
     .feature-item {
-      text-align: center;
-      padding: 25px 20px; 
       background-color: #fdfdfd; 
-      border-radius: 12px; 
-      border: 1px solid #eef0eb;
+      border: 1px solid #eef0eb; 
+      border-radius: 12px;
+      padding: 25px 20px; 
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .feature-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 25px rgba(0, 102, 51, 0.08);
+      transform: translateY(-6px); 
+      box-shadow: 0 10px 25px rgba(0,102,51,0.08);
     }
     .feature-item h3 {
       font-size: 1.2rem; 
       font-weight: 600; 
-      color: #222; 
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem; 
+      color: #222;
     }
     .feature-item p {
       font-size: 0.9rem; 
       color: #555; 
       line-height: 1.6;
-    }
-    .feature-icon {
-      width: 55px; 
-      height: 55px; 
-      margin: 0 auto 1.2rem auto;
-      background-color: rgba(0, 102, 51, 0.08);
-      border-radius: 50%; 
-      display: flex; 
-      align-items: center; 
-      justify-content: center;
-      background-repeat: no-repeat; 
-      background-position: center; 
-      background-size: 50%;
     }
 
     .homepage-footer {
@@ -213,179 +153,95 @@
       margin-top: auto;
     }
 
-    /* Just for demo icons (You can embed your own) */
-    .meeting-icon { 
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23006633" ...>...</svg>'); 
-    }
-    .airport-icon {
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23006633" ...>...</svg>');
-    }
-    .field-icon {
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23006633" ...>...</svg>');
-    }
-    .secure-icon-v2 {
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23006633" ...>...</svg>');
-    }
-
-    /* --------------------
-       AUTH / LOGIN VIEWS
-    -------------------- */
+    /* ----------------------------------------
+       AUTH / LOGIN / REGISTRATION
+    ---------------------------------------- */
     .auth-container {
-      width: 100%; max-width: 480px; margin: auto; 
-      padding: 40px 30px; background-color: #ffffff;
+      width: 100%;
+      max-width: 480px; 
+      margin: auto; 
+      padding: 40px 30px; 
+      background-color: #ffffff;
       border-radius: 12px; 
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); 
       margin-top: 5vh; 
       margin-bottom: 5vh;
     }
-    .auth-container h1, .auth-container h2 {
+    .auth-container h2 {
       text-align: center; 
       color: #00592C; 
       margin-bottom: 1.8rem; 
       font-weight: 700;
     }
-    .auth-logo {
-      text-align: center; 
-      font-size: 2.2rem; 
-      font-weight: 700; 
-      color: #006633; 
-      margin-bottom: 1.2rem;
-    }
     .auth-form .form-group {
-      margin-bottom: 1.2rem; 
+      margin-bottom: 1.2rem;
       position: relative;
     }
     .auth-form label {
-      display: block; 
-      margin-bottom: 0.5rem; 
-      font-weight: 500; 
-      font-size: 0.9rem; 
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      font-size: 0.9rem;
       color: #555;
     }
-    .auth-form input[type="text"],
     .auth-form input[type="email"],
+    .auth-form input[type="text"],
     .auth-form input[type="tel"],
     .auth-form input[type="password"],
     .auth-form select,
     .auth-form textarea {
-      width: 100%; 
-      padding: 12px 15px; 
-      border: 1px solid #d1d5db; 
-      border-radius: 8px; 
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
       font-size: 1rem;
-      font-family: inherit; 
-      background-color: #f9fafb; 
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      font-family: inherit;
+      background-color: #f9fafb;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
     .auth-form input:focus, .auth-form select:focus, .auth-form textarea:focus {
       border-color: #006633;
-      outline: 0; 
+      outline: none;
       background-color: #fff;
-      box-shadow: 0 0 0 3px rgba(0, 102, 51, 0.1);
-    }
-    .auth-form small {
-      font-size: 0.8rem; 
-      color: #6c757d; 
-      margin-top: 4px; 
-      display: block;
+      box-shadow: 0 0 0 3px rgba(0,102,51,0.1);
     }
     .gradient-button {
-      display: inline-block; width: 100%; 
-      padding: 14px; border: none; border-radius: 8px; 
-      font-size: 1.1rem; font-weight: 600;
-      color: white; cursor: pointer; 
-      transition: transform 0.2s ease, box-shadow 0.3s ease; 
+      display: inline-block;
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
       margin-top: 1.5rem;
       background: linear-gradient(135deg, #00773B 0%, #00592C 100%);
-      position: relative; 
-      overflow: hidden; 
+      position: relative;
+      overflow: hidden;
       z-index: 1;
-    }
-    .gradient-button span {
-      position: relative; 
-      z-index: 2;
-    }
-    .gradient-button::before {
-      content: ''; 
-      position: absolute; 
-      top: 0; 
-      left: -100%; 
-      width: 100%; 
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.6s ease; 
-      z-index: 1;
-    }
-    .gradient-button:hover::before {
-      left: 100%;
     }
     .gradient-button:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 12px rgba(0, 102, 51, 0.2);
-    }
-    .gradient-button:active {
-      transform: translateY(0);
-      box-shadow: 0 3px 6px rgba(0, 102, 51, 0.15);
-    }
-    .auth-links {
-      text-align: center; 
-      margin-top: 1.8rem; 
-      font-size: 0.9rem; 
-      line-height: 1.6;
-    }
-    .auth-links a {
-      margin: 0 8px;
-    }
-    .forgot-password {
-      margin-top: 10px; 
-      display: inline-block; 
-      color: #6c757d; 
-      font-size: 0.85rem;
-    }
-    .back-link {
-      display: inline-block; 
-      margin-top: 1rem; 
-      color: #6c757d; 
-      font-size: 0.9rem;
-    }
-    .suggestions-dropdown {
-      position: absolute; 
-      background-color: white; 
-      border: 1px solid #ddd; 
-      border-top: none;
-      border-radius: 0 0 8px 8px; 
-      max-height: 150px; 
-      overflow-y: auto; 
-      width: 100%;
-      z-index: 100; 
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-      display: none; /* Hidden by default */
-    }
-    .suggestions-dropdown div {
-      padding: 10px 15px; 
-      cursor: pointer; 
-      font-size: 0.95rem;
-    }
-    .suggestions-dropdown div:hover {
-      background-color: #f0f2f5;
+      box-shadow: 0 6px 12px rgba(0,102,51,0.2);
     }
 
-    /* --------------------
-       BOOKING VIEW
-    -------------------- */
+    /* ----------------------------------------
+       MAIN BOOKING VIEW
+    ---------------------------------------- */
     #view-main-booking {
       overflow: hidden; 
       display: flex; 
       flex-direction: column; 
-      height: 100%; 
-      /* .view.active sets display:block, but we also want a flex container inside. */
+      height: 100%;
     }
     .site-header {
       flex-shrink: 0; 
       position: sticky; 
       top: 0; 
       z-index: 1000; 
-      background-color: #ffffff; 
+      background-color: #fff; 
       box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
       border-bottom: 1px solid #e0e0e0;
     }
@@ -402,40 +258,18 @@
       color: #006633; 
       cursor: pointer;
     }
-    .user-info {
-      display: flex; 
-      align-items: center; 
-      gap: 1rem;
-    }
-    .profile-photo-placeholder {
-      width: 40px; 
-      height: 40px; 
-      border-radius: 50%; 
-      background-color: #e0e0e0; 
-      cursor: pointer;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%236c757d" ...>...</svg>');
-      background-size: 60%; 
-      background-position: center; 
-      background-repeat: no-repeat; 
-      border: 2px solid #006633; 
-      transition: transform 0.3s ease;
-    }
-    .profile-photo-placeholder:hover {
-      transform: scale(1.1);
-    }
     .logout-btn {
       background: none; 
       border: none; 
       color: #cc0000; 
       cursor: pointer; 
-      font-size: 1.2rem; 
+      font-size: 1.2rem;
       padding: 5px; 
       transition: color 0.3s;
     }
     .logout-btn:hover {
       color: #a30000;
     }
-
     .main-booking-layout {
       display: flex; 
       flex-grow: 1; 
@@ -445,33 +279,47 @@
     #map {
       height: 40vh; 
       width: 100%; 
-      background-color: #e9ecef; 
-      z-index: 1; 
+      background-color: #ccc; 
       position: relative; 
       flex-shrink: 0;
     }
-    #map-instructions {
+    #loading-indicator {
+      display: none; 
       position: absolute; 
-      bottom: 10px; 
+      top: 50%; 
+      left: 50%; 
+      transform: translate(-50%,-50%);
+      background-color: rgba(255,255,255,0.9);
+      color: #333;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      z-index: 10001;
+    }
+    #search-overlay {
+      display: none; 
+      position: absolute; 
+      top: 20px; 
       left: 50%; 
       transform: translateX(-50%);
-      background-color: rgba(0, 0, 0, 0.6); 
-      color: white; 
-      padding: 5px 10px; 
-      border-radius: 5px; 
-      font-size: 0.75rem; 
-      z-index: 401; 
-      text-align: center; 
-      pointer-events: none;
+      background: rgba(0,0,0,0.75); 
+      color: #fff; 
+      padding: 10px 20px; 
+      border-radius: 8px; 
+      z-index: 10002;
+      font-size: 0.95rem;
+    }
+    #search-overlay.show {
+      display: block;
     }
     .ride-panel {
       flex-grow: 1; 
-      background-color: #ffffff; 
+      background-color: #fff; 
       border-top-left-radius: 24px; 
       border-top-right-radius: 24px; 
       margin-top: -24px; 
-      z-index: 10;
-      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1); 
+      box-shadow: 0 -5px 15px rgba(0,0,0,0.1); 
       padding: 25px 20px; 
       overflow: hidden; 
       display: flex; 
@@ -490,7 +338,7 @@
       border: none; 
       border-bottom: 3px solid transparent; 
       font-size: 1rem; 
-      font-weight: 500; 
+      font-weight: 500;
       color: #6c757d; 
       cursor: pointer; 
       transition: border-color 0.3s, color 0.3s; 
@@ -500,1365 +348,1135 @@
       color: #006633; 
       border-bottom-color: #006633;
     }
-    .panel-tabs button::after {
-      content: ''; 
-      position: absolute; 
-      bottom: -1px; 
-      left: 0; 
-      width: 0; 
-      height: 3px; 
-      background-color: #006633; 
-      transition: width 0.3s ease;
-    }
-    .panel-tabs button.active::after {
-      width: 100%;
-    }
     .panel-content {
       display: none; 
       flex-grow: 1; 
       overflow-y: auto; 
+      animation: fadeIn 0.4s ease forwards; 
       padding-right: 5px;
     }
     .panel-content.active {
       display: block;
     }
+    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+
     .booking-form .form-group {
-      margin-bottom: 1rem; 
-      position: relative;
+      margin-bottom: 1rem;
     }
-    .booking-form input[type="text"],
-    .booking-form input[type="datetime-local"],
-    .booking-form input[type="number"],
-    .booking-form select,
-    .booking-form textarea {
+    .booking-form label { font-weight: 500; margin-bottom:0.3rem; display:block; }
+    .booking-form input, .booking-form select, .booking-form textarea {
       width: 100%; 
-      padding: 14px 18px; 
-      border: 1px solid #e0e0e0; 
-      border-radius: 10px;
-      font-size: 1rem; 
-      font-family: inherit; 
-      background-color: #fdfdfd;
-      transition: all 0.3s ease; 
-      box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+      padding: 12px; 
+      border: 1px solid #ddd; 
+      border-radius: 8px;
+      font-size:1rem; 
+      font-family:inherit; 
+      background-color:#fdfdfd;
     }
     .booking-form input:focus, .booking-form select:focus, .booking-form textarea:focus {
-      border-color: #006633; 
-      outline: 0; 
-      background-color: #fff; 
-      box-shadow: 0 4px 8px rgba(0, 102, 51, 0.1);
+      border-color:#006633; 
+      outline:none; 
+      background:#fff; 
+      box-shadow:0 4px 8px rgba(0,102,51,0.1);
     }
-    .locate-button {
-      position: absolute; 
-      right: 10px; 
-      top:50%; 
-      transform: translateY(-50%);
-      background: none; 
-      border: none; 
-      font-size: 1.2rem; 
-      color: #006633; 
-      cursor: pointer; 
-      padding: 5px;
-    }
-    .locate-button:hover {
-      opacity: 0.7;
-    }
-    .split-group {
-      display: flex; 
-      gap: 1rem;
-    }
-    .split-group .form-group {
-      flex: 1;
-    }
-    .estimation-box {
-      text-align: center; 
-      font-size: 0.9rem; 
-      color: #555; 
-      margin-top: 1.5rem; 
-      padding: 15px; 
-      background-color: #f8f9fa; 
-      border-radius: 8px; 
-      border: 1px solid #e9ecef;
-    }
-    .estimation-box div {
-      margin-bottom: 5px;
-    }
-    .estimation-box strong {
-      color: #006633; 
-      font-weight: 600;
-    }
-    .estimation-box small {
-      font-size: 0.75rem; 
-      color: #888; 
-      margin-top: 5px; 
-      display: block;
-    }
-    .booking-form .submit-button {
-      margin-top: 1.5rem; 
-      width: 100%;
-    }
-    .trip-list {
-      margin-top: 10px; 
-      display: flex; 
-      flex-direction: column; 
-      gap: 0.8rem;
-    }
-    .trip-card {
-      background-color: #ffffff; 
-      border: 1px solid #e9ecef; 
-      border-radius: 10px; 
-      padding: 15px;
-      display: flex; 
-      align-items: center; 
-      gap: 15px;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .trip-card:hover {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
-      transform: translateY(-2px);
-    }
-    .trip-icon {
-      font-size: 1.8rem; 
-      color: #006633; 
-      flex-shrink: 0;
-    }
-    .trip-icon::before {
-      content: '\1F697'; /* Car emoji */
-    }
-    .trip-details {
-      flex-grow: 1; 
-      line-height: 1.4;
-    }
-    .trip-locations {
-      font-weight: 500; 
-      font-size: 0.95rem; 
-      margin-bottom: 3px;
-    }
-    .trip-datetime {
-      font-size: 0.85rem; 
-      color: #6c757d;
-    }
-    .trip-status {
-      font-weight: 500; 
-      font-size: 0.75rem; 
-      padding: 4px 10px; 
-      border-radius: 12px; 
-      white-space: nowrap;
-      margin-left: auto; 
-      flex-shrink: 0; 
-      border: 1px solid transparent; 
-      text-transform: uppercase;
-    }
-    .trip-status.upcoming {
-      background-color: #fff3cd; 
-      color: #856404; 
-      border-color: #ffeeba;
-    }
-    .trip-status.completed {
-      background-color: #d4edda; 
-      color: #155724; 
-      border-color: #c3e6cb;
-    }
-    .trip-status.cancelled {
-      background-color: #f8d7da; 
-      color: #721c24; 
-      border-color: #f5c6cb;
-    }
-    .trip-status.inprogress {
-      background-color: #d1ecf1; 
-      color: #0c5460; 
-      border-color: #bee5eb;
-    }
-    #loading-indicator {
-      display: none; 
-      position: absolute; 
-      top: 50%; 
-      left: 50%;
-      transform: translate(-50%, -50%); 
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #333; 
-      padding: 12px 18px; 
-      border-radius: 8px; 
-      z-index: 1010; 
-      font-size: 0.9rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
-      font-weight: 500;
+    .submit-button {
+      margin-top:1.2rem; 
+      width:100%; 
+      cursor:pointer;
     }
 
-    /* --------------------
+    /* Trip status example cards */
+    .trip-list { margin-top:10px; display:flex; flex-direction:column; gap:0.8rem; }
+    .trip-card {
+      background:#fff; 
+      border:1px solid #e9ecef; 
+      border-radius:10px; 
+      padding:15px; 
+      display:flex; 
+      align-items:center; 
+      gap:15px; 
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .trip-card:hover { box-shadow:0 4px 10px rgba(0,0,0,0.08); transform: translateY(-2px); }
+    .trip-icon { font-size:1.8rem; color:#006633; flex-shrink:0; }
+    .trip-details { flex-grow:1; line-height:1.4; }
+    .trip-status { 
+      font-weight:500; font-size:0.75rem; padding:4px 10px; border-radius:12px; 
+      white-space:nowrap; margin-left:auto; flex-shrink:0; border:1px solid transparent; 
+      text-transform:uppercase;
+    }
+    .trip-status.upcoming { background-color:#fff3cd; color:#856404; border-color:#ffeeba; }
+    .trip-status.completed { background-color:#d4edda; color:#155724; border-color:#c3e6cb; }
+    .trip-status.inprogress { background-color:#d1ecf1; color:#0c5460; border-color:#bee5eb; }
+    .trip-status.cancelled { background-color:#f8d7da; color:#721c24; border-color:#f5c6cb; }
+
+    /* ----------------------------------------
        AGENCY DASHBOARD
-    -------------------- */
+    ---------------------------------------- */
     #view-agency-dashboard {
-      display: flex; 
-      flex-direction: column; 
-      height: 100%;
-      overflow: hidden;
+      display:flex; 
+      flex-direction:column; 
+      height:100%; 
+      overflow:hidden;
     }
     .dashboard-layout {
-      display: flex; 
-      flex-grow: 1; 
-      background-color: #f8f9fa; 
-      overflow: hidden;
+      display:flex; 
+      flex-grow:1; 
+      background-color:#f8f9fa; 
+      overflow:hidden;
     }
     .dashboard-sidebar {
-      width: 240px; 
-      background-color: #ffffff; 
-      border-right: 1px solid #e0e0e0; 
-      padding: 20px 0; 
-      flex-shrink: 0; 
-      display: flex; 
-      flex-direction: column; 
-      overflow-y: auto; 
-      box-shadow: 2px 0 5px rgba(0,0,0,0.03);
+      width:240px; 
+      background-color:#fff; 
+      border-right:1px solid #e0e0e0; 
+      padding:20px 0; 
+      flex-shrink:0; 
+      display:flex; 
+      flex-direction:column; 
+      overflow-y:auto; 
+      box-shadow:2px 0 5px rgba(0,0,0,0.03);
     }
-    .sidebar-nav ul {
-      list-style: none; 
-      padding: 0; 
-      margin: 0;
-    }
+    .sidebar-nav ul { list-style:none; margin:0; padding:0; }
     .sidebar-nav li a {
-      display: flex; 
-      align-items: center; 
-      padding: 12px 20px; 
-      color: #333; 
-      font-weight: 500; 
-      font-size: 0.95rem; 
-      border-left: 4px solid transparent;
-      transition: background-color 0.2s ease, border-left-color 0.2s ease, color 0.2s ease;
+      display:flex; 
+      align-items:center; 
+      padding:12px 20px; 
+      color:#333; 
+      font-weight:500; 
+      font-size:0.95rem; 
+      border-left:4px solid transparent;
+      transition: background-color 0.2s, border-left-color 0.2s, color 0.2s;
     }
     .sidebar-nav li a:hover {
-      background-color: #f0f7f0; 
-      color: #006633;
+      background-color:#f0f7f0; color:#006633;
     }
     .sidebar-nav li a.active {
-      background-color: #e8f5e9; 
-      border-left-color: #006633; 
-      color: #006633; 
-      font-weight: 600;
-    }
-    .nav-icon {
-      display: inline-block; 
-      width: 20px; 
-      height: 20px; 
-      margin-right: 12px; 
-      opacity: 0.8;
-      background-repeat: no-repeat; 
-      background-position: center; 
-      background-size: contain;
-      filter: invert(30%) sepia(11%) saturate(1957%) hue-rotate(106deg) brightness(94%) contrast(97%);
+      background-color:#e8f5e9; border-left-color:#006633; color:#006633; font-weight:600;
     }
     .dashboard-main {
-      flex-grow: 1; 
-      padding: 25px 30px; 
-      overflow-y: auto;
+      flex-grow:1; 
+      padding:25px 30px; 
+      overflow-y:auto;
     }
     .dashboard-section {
-      display: none;
+      display:none;
+      animation:fadeIn 0.4s ease forwards;
     }
-    .dashboard-section.active {
-      display: block;
-    }
+    .dashboard-section.active { display:block; }
     .dashboard-section h2 {
-      font-size: 1.8rem; 
-      font-weight: 700; 
-      color: #00592C; 
-      margin-bottom: 1.5rem; 
-      border-bottom: 1px solid #e0e0e0; 
-      padding-bottom: 0.5rem;
+      font-size:1.8rem; 
+      font-weight:700; 
+      color:#00592C; 
+      margin-bottom:1.5rem; 
+      border-bottom:1px solid #e0e0e0; 
+      padding-bottom:0.5rem;
     }
     .stats-grid {
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-      gap: 1.5rem; 
-      margin-bottom: 2rem;
+      display:grid; 
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); 
+      gap:1.5rem; 
+      margin-bottom:2rem;
     }
     .stat-card {
-      background-color: #ffffff; 
-      padding: 20px; 
-      border-radius: 8px; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05); 
-      border: 1px solid #e9ecef; 
-      text-align: center;
+      background:#fff; 
+      padding:20px; 
+      border-radius:8px; 
+      box-shadow:0 3px 8px rgba(0,0,0,0.05); 
+      border:1px solid #e9ecef; 
+      text-align:center;
     }
     .stat-card h4 {
-      font-size: 0.9rem; 
-      font-weight: 500; 
-      color: #555; 
-      margin-bottom: 8px; 
-      text-transform: uppercase;
+      font-size:0.9rem; 
+      font-weight:500; 
+      color:#555; 
+      margin-bottom:8px; 
+      text-transform:uppercase;
     }
     .stat-card .stat-value {
-      font-size: 2rem; 
-      font-weight: 700; 
-      color: #006633; 
-      line-height: 1.2;
+      font-size:2rem; 
+      font-weight:700; 
+      color:#006633; 
+      line-height:1.2;
     }
     .placeholder-widget {
-      background-color: #e9ecef; 
-      border-radius: 8px; 
-      padding: 40px; 
-      text-align: center;
-      color: #6c757d; 
-      font-style: italic; 
-      margin-top: 2rem; 
-      border: 1px dashed #ced4da;
+      background:#e9ecef; 
+      border-radius:8px; 
+      padding:40px; 
+      text-align:center; 
+      color:#6c757d; 
+      font-style:italic; 
+      margin-top:2rem; 
+      border:1px dashed #ced4da;
     }
+
     .controls {
-      margin-bottom: 1.5rem; 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 1rem; 
-      align-items: center;
+      margin-bottom:1.5rem; 
+      display:flex; 
+      flex-wrap:wrap; 
+      gap:1rem; 
+      align-items:center;
     }
-    .controls input[type="search"], .controls select, .controls input[type="date"] {
-      padding: 8px 12px; 
-      border: 1px solid #ced4da; 
-      border-radius: 6px; 
-      font-size: 0.9rem; 
-      font-family: inherit;
-    }
-    .controls input[type="search"] {
-      flex-grow: 1; 
-      max-width: 400px;
+    .controls input[type="search"],
+    .controls select,
+    .controls input[type="date"] {
+      padding:8px 12px; 
+      border:1px solid #ced4da; 
+      border-radius:6px; 
+      font-size:0.9rem; 
+      font-family:inherit;
     }
     .table-container {
-      background-color: #ffffff; 
-      border-radius: 8px; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05); 
-      overflow-x: auto;
-      border: 1px solid #e9ecef;
+      background:#fff; 
+      border-radius:8px; 
+      box-shadow:0 3px 8px rgba(0,0,0,0.05); 
+      border:1px solid #e9ecef; 
+      overflow-x:auto;
     }
     table {
-      width: 100%; 
-      border-collapse: collapse;
+      width:100%; 
+      border-collapse:collapse;
     }
     th, td {
-      padding: 12px 15px; 
-      text-align: left; 
-      border-bottom: 1px solid #e9ecef;
-      font-size: 0.9rem; 
-      white-space: nowrap;
+      padding:12px 15px; 
+      text-align:left; 
+      border-bottom:1px solid #e9ecef;
+      font-size:0.9rem;
+      white-space:nowrap;
     }
     th {
-      background-color: #f8f9fa; 
-      font-weight: 600; 
-      color: #333;
+      background:#f8f9fa; 
+      font-weight:600; 
+      color:#333;
     }
-    tbody tr:hover {
-      background-color: #f0f7f0;
-    }
+    tbody tr:hover { background:#f0f7f0; }
     .status-badge {
-      padding: 3px 8px; 
-      border-radius: 12px; 
-      font-size: 0.75rem; 
-      font-weight: 500; 
-      text-transform: uppercase; 
-      border: 1px solid transparent;
+      padding:3px 8px; 
+      border-radius:12px; 
+      font-size:0.75rem; 
+      font-weight:500; 
+      text-transform:uppercase; 
+      border:1px solid transparent;
     }
-    .status-badge.pending {
-      background-color: #fff3cd; color: #856404; border-color: #ffeeba;
-    }
-    .status-badge.approved {
-      background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb;
-    }
-    .status-badge.completed {
-      background-color: #d4edda; color: #155724; border-color: #c3e6cb;
-    }
-    .status-badge.cancelled {
-      background-color: #f8d7da; color: #721c24; border-color: #f5c6cb;
-    }
-    .status-badge.active {
-      background-color: #d4edda; color: #155724; border-color: #c3e6cb;
-    }
+    .status-badge.pending { background:#fff3cd; color:#856404; border-color:#ffeeba; }
+    .status-badge.approved { background:#d1ecf1; color:#0c5460; border-color:#bee5eb; }
+    .status-badge.completed { background:#d4edda; color:#155724; border-color:#c3e6cb; }
+    .status-badge.cancelled { background:#f8d7da; color:#721c24; border-color:#f5c6cb; }
+    .status-badge.active { background:#d4edda; color:#155724; border-color:#c3e6cb; }
     .action-btn {
-      padding: 5px 10px; 
-      font-size: 0.8rem; 
-      border-radius: 4px; 
-      cursor: pointer; 
-      border: 1px solid transparent; 
-      margin-right: 5px; 
-      transition: all 0.2s ease; 
-      font-weight: 500; 
-      background: none;
+      padding:5px 10px; 
+      font-size:0.8rem; 
+      border-radius:4px; 
+      cursor:pointer; 
+      border:1px solid transparent; 
+      margin-right:5px; 
+      transition:all 0.2s ease; 
+      font-weight:500; 
+      background:none;
     }
-    .action-btn:last-child {
-      margin-right: 0;
-    }
-    .action-btn.approve {
-      background-color: #28a745; color: white; border-color: #28a745;
-    }
-    .action-btn.approve:hover {
-      background-color: #218838;
-    }
-    .action-btn.reject {
-      background-color: #dc3545; color: white; border-color: #dc3545;
-    }
-    .action-btn.reject:hover {
-      background-color: #c82333;
-    }
-    .action-btn.view, .action-btn.edit {
-      background-color: #007bff; color: white; border-color: #007bff;
-    }
-    .action-btn.view:hover, .action-btn.edit:hover {
-      background-color: #0056b3;
-    }
-    .action-btn.deactivate {
-      background-color: #ffc107; color: #333; border-color: #ffc107;
-    }
-    .action-btn.deactivate:hover {
-      background-color: #e0a800;
-    }
-    .action-btn.add-new {
-      background-color: #006633; color: white; border: none;
-    }
-    .action-btn.add-new:hover {
-      background-color: #004d26;
-    }
+    .action-btn.approve { background:#28a745; color:#fff; border-color:#28a745; }
+    .action-btn.approve:hover { background:#218838; }
+    .action-btn.reject { background:#dc3545; color:#fff; border-color:#dc3545; }
+    .action-btn.reject:hover { background:#c82333; }
+    .action-btn.view, .action-btn.edit { background:#007bff; color:#fff; border-color:#007bff; }
+    .action-btn.view:hover, .action-btn.edit:hover { background:#0056b3; }
+    .action-btn.deactivate { background:#ffc107; color:#333; border-color:#ffc107; }
+    .action-btn.deactivate:hover { background:#e0a800; }
+    .action-btn.add-new { background:#006633; color:#fff; border:none; }
+    .action-btn.add-new:hover { background:#004d26; }
+
     .settings-form {
-      max-width: 600px; 
-      background-color: #fff; 
-      padding: 25px; 
-      border-radius: 8px; 
-      box-shadow: 0 3px 8px rgba(0,0,0,0.05); 
-      border: 1px solid #e9ecef;
+      max-width:600px; 
+      background:#fff; 
+      padding:25px; 
+      border-radius:8px; 
+      box-shadow:0 3px 8px rgba(0,0,0,0.05); 
+      border:1px solid #e9ecef;
     }
-    .settings-form .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .settings-form label {
-      display: block; 
-      margin-bottom: 0.5rem; 
-      font-weight: 500;
-    }
+    .settings-form .form-group { margin-bottom:1.5rem; }
+    .settings-form label { display:block; margin-bottom:0.5rem; font-weight:500; }
     .settings-form input[type="text"] {
-      width: 100%; 
-      padding: 10px; 
-      border: 1px solid #ced4da; 
-      border-radius: 6px;
+      width:100%; 
+      padding:10px; 
+      border:1px solid #ced4da; 
+      border-radius:6px;
     }
-    .settings-form input[type="text"]:disabled {
-      background-color: #e9ecef; 
-      cursor: not-allowed;
+    .settings-form input[type="text"]:disabled { background:#e9ecef; cursor:not-allowed; }
+
+    /* ----------------------------------------
+       MEDIA QUERIES / Responsive 
+       (truncated or simplified for brevity)
+    ---------------------------------------- */
+    @media (max-width:767px){
+      /* ... adapt as needed ... */
     }
-
-    /* RESPONSIVE ADJUSTMENTS TRIMMED FOR BREVITY (you can add your own) */
-
-    </style>
+  </style>
 </head>
 
 <body>
-    <!-- Top Nav - click links to switch .view -->
-    <div class="top-nav">
-        <a onclick="showView('view-homepage')">Home</a>
-        <a onclick="showView('view-login')">Login</a>
-        <a onclick="showView('view-register-staff')">Register Staff</a>
-        <a onclick="showView('view-register-agency')">Register Agency</a>
-        <a onclick="showView('view-main-booking')">Booking</a>
-        <a onclick="showView('view-agency-dashboard')">Agency Dashboard</a>
-    </div>
 
-    <!-- ========== HOMEPAGE (ACTIVE BY DEFAULT) ========== -->
-    <div id="view-homepage" class="view active">
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="hero-headline">Official Government Travel,<br>Simplified &amp; Secured.</h1>
-                <p class="hero-tagline">The dedicated platform for booking authorized vehicles for Nigerian government personnel.</p>
-                <div class="hero-cta">
-                    <button class="cta-button primary" onclick="showView('view-login')">Staff / Admin Login</button>
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <a onclick="showView('view-homepage')">Home</a>
+    <a onclick="showView('view-login')">Login</a>
+    <a onclick="showView('view-register-staff')">Register Staff</a>
+    <a onclick="showView('view-register-agency')">Register Agency</a>
+    <a onclick="showView('view-main-booking')">Booking</a>
+    <a onclick="showView('view-agency-dashboard')">Agency Dashboard</a>
+  </div>
+
+  <!-- HOMEPAGE (ACTIVE BY DEFAULT) -->
+  <div id="view-homepage" class="view active">
+    <section class="hero-section">
+      <div class="container" style="position:relative;z-index:2;">
+        <h1 class="hero-headline">NGovRide: Unified Demo</h1>
+        <p style="font-size:1.1rem;color:#444;margin-bottom:2rem;">
+          Booking official vehicles, simplified. Now with multi-agency fleet simulation.
+        </p>
+        <div>
+          <button class="cta-button primary" onclick="showView('view-login')">Staff / Admin Login</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="features-section">
+      <h2 class="section-title">Key Features</h2>
+      <div class="features-grid">
+        <div class="feature-item">
+          <h3>Multi-Agency Fleet</h3>
+          <p>View available cars from user’s own agency first, fallback to others if needed.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Map Integration</h3>
+          <p>Use Google Maps for route/distance estimation. Markers for car positions & driver info.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Modern UI</h3>
+          <p>Single-page structure with multiple sections: login, booking, agency dashboard, etc.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Simulated Acceptance</h3>
+          <p>Simulate the “searching” process for a driver, short delay, then success or no car.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="homepage-footer">
+      <p>
+        &copy; <script>document.write(new Date().getFullYear())</script> NGovRide Demo. Federal Government of Nigeria.
+      </p>
+    </footer>
+  </div>
+  <!-- END HOMEPAGE -->
+
+
+  <!-- LOGIN VIEW -->
+  <div id="view-login" class="view">
+    <div class="auth-container">
+      <h2>Staff &amp; Admin Login</h2>
+      <form id="login-form" class="auth-form">
+        <div class="form-group">
+          <label for="login-email">Official Email</label>
+          <input type="email" id="login-email" required placeholder="e.g., user@agency.gov.ng">
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" required>
+        </div>
+        <button type="submit" class="gradient-button">
+          <span>Login</span>
+        </button>
+      </form>
+      <div style="text-align:center;margin-top:1.8rem;font-size:0.9rem;line-height:1.6;">
+        <a href="#" onclick="showView('view-register-staff')">Register as Staff</a> |
+        <a href="#" onclick="showView('view-register-agency')">Register Agency</a>
+      </div>
+    </div>
+  </div>
+  <!-- END LOGIN VIEW -->
+
+
+  <!-- STAFF REGISTRATION VIEW -->
+  <div id="view-register-staff" class="view">
+    <div class="auth-container">
+      <h2>Staff Registration</h2>
+      <form id="register-staff-form" class="auth-form">
+        <div class="form-group">
+          <label for="staff-name">Full Name</label>
+          <input type="text" id="staff-name" required>
+        </div>
+        <div class="form-group">
+          <label for="staff-email">Official Email (.gov.ng)</label>
+          <input type="email" id="staff-email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address">
+        </div>
+        <div class="form-group">
+          <label for="staff-agency">Agency</label>
+          <select id="staff-agency" required>
+            <option value="" disabled selected>-- Select Your Agency --</option>
+            <option>Federal Ministry of Finance</option>
+            <option>Federal Ministry of Works</option>
+            <option>Federal Ministry of Health</option>
+            <option>NITDA</option>
+            <option>FIRS</option>
+            <option>Nigeria Customs Service</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="staff-password">Password</label>
+          <input type="password" id="staff-password" required minlength="8">
+        </div>
+        <button type="submit" class="gradient-button"><span>Register Staff</span></button>
+      </form>
+      <div style="text-align:center;margin-top:1.8rem;">
+        <a href="#" onclick="showView('view-login')" style="color:#6c757d;">&laquo; Back to Login</a>
+      </div>
+    </div>
+  </div>
+  <!-- END STAFF REG -->
+
+
+  <!-- AGENCY REG VIEW -->
+  <div id="view-register-agency" class="view">
+    <div class="auth-container">
+      <h2>Agency Admin Registration</h2>
+      <form id="register-agency-form" class="auth-form">
+        <div class="form-group">
+          <label for="agency-name">Agency Name</label>
+          <input type="text" id="agency-name" required>
+        </div>
+        <div class="form-group">
+          <label for="agency-admin-email">Administrator Official Email (.gov.ng)</label>
+          <input type="email" id="agency-admin-email" required pattern=".+\.gov\.ng$">
+        </div>
+        <button type="submit" class="gradient-button"><span>Register Agency Admin</span></button>
+      </form>
+      <div style="text-align:center;margin-top:1.8rem;">
+        <a href="#" onclick="showView('view-login')" style="color:#6c757d;">&laquo; Back to Login</a>
+      </div>
+    </div>
+  </div>
+  <!-- END AGENCY REG -->
+
+
+  <!-- MAIN BOOKING VIEW -->
+  <div id="view-main-booking" class="view">
+    <header class="site-header">
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="logo" onclick="logout()" title="Logout">NGovRide</div>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <span id="user-display-name">User Name</span>
+          <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button>
+        </div>
+      </div>
+    </header>
+    <main class="main-booking-layout">
+      <div id="map">
+        <div id="loading-indicator">Locating...</div>
+        <div id="search-overlay">Searching for available cars...</div>
+      </div>
+      <div class="ride-panel">
+        <div class="panel-tabs">
+          <button id="tab-book" class="active" onclick="showPanel('booking')">Book Ride</button>
+          <button id="tab-trips" onclick="showPanel('trips')">My Trips</button>
+        </div>
+        <!-- BOOKING PANEL -->
+        <div id="panel-booking" class="panel-content active">
+          <section class="booking-form" aria-labelledby="booking-heading">
+            <h2 id="booking-heading" style="display:none;">Book a Ride</h2>
+            <form id="booking-form">
+              <div class="form-group">
+                <label for="pickup-address">Pickup Address</label>
+                <div style="position:relative;">
+                  <input type="text" id="pickup-address" required placeholder="Enter or click map for pickup">
+                  <button type="button" id="locate-btn" title="Use Current Location" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);border:none;background:none;cursor:pointer;font-size:1.2rem;">&#x1F4CD;</button>
                 </div>
+              </div>
+              <div class="form-group">
+                <label for="destination-address">Destination Address</label>
+                <input type="text" id="destination-address" required placeholder="Enter or click map for destination">
+              </div>
+              <div class="form-group">
+                <label for="trip-datetime">Date & Time</label>
+                <input type="datetime-local" id="trip-datetime" required>
+              </div>
+              <div class="form-group">
+                <label for="passengers">Passengers</label>
+                <input type="number" id="passengers" required min="1" max="15">
+              </div>
+              <div class="form-group">
+                <label for="vehicle-type">Vehicle Type (Optional)</label>
+                <select id="vehicle-type">
+                  <option value="" disabled selected>Any Available</option>
+                  <option value="sedan">Sedan</option>
+                  <option value="suv">SUV</option>
+                  <option value="bus">Bus</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="trip-purpose">Purpose of Trip</label>
+                <textarea id="trip-purpose" rows="2" required placeholder="e.g. Official meeting"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="trip-notes">Notes (optional)</label>
+                <textarea id="trip-notes" rows="2"></textarea>
+              </div>
+              <div style="margin:1rem 0;">
+                <div>Distance: <span id="est-distance">--</span></div>
+                <div>Est. Cost: <strong id="est-cost">--</strong></div>
+              </div>
+              <button type="submit" class="gradient-button submit-button">
+                <span>Confirm &amp; Request Ride</span>
+              </button>
+            </form>
+          </section>
+        </div>
+        <!-- MY TRIPS PANEL -->
+        <div id="panel-trips" class="panel-content">
+          <section class="trip-history">
+            <h2 style="display:none;">My Trips</h2>
+            <div class="trip-list">
+              <article class="trip-card">
+                <div class="trip-icon"></div>
+                <div class="trip-details">
+                  <div><strong>From:</strong> Ministry of Works <strong>To:</strong> Aso Villa</div>
+                  <div class="trip-datetime">Apr 05, 2025 - 10:00 AM</div>
+                </div>
+                <div class="trip-status upcoming">Upcoming</div>
+              </article>
+              <article class="trip-card">
+                <div class="trip-icon"></div>
+                <div class="trip-details">
+                  <div><strong>From:</strong> Fed. Secretariat <strong>To:</strong> Airport</div>
+                  <div class="trip-datetime">Mar 28, 2025 - 02:30 PM</div>
+                </div>
+                <div class="trip-status completed">Completed</div>
+              </article>
+              <article class="trip-card">
+                <div class="trip-icon"></div>
+                <div class="trip-details">
+                  <div><strong>From:</strong> NITDA HQ <strong>To:</strong> Min. of Comms</div>
+                  <div class="trip-datetime">Mar 30, 2025 - 03:45 PM</div>
+                </div>
+                <div class="trip-status inprogress">In Progress</div>
+              </article>
+              <article class="trip-card">
+                <div class="trip-icon"></div>
+                <div class="trip-details">
+                  <div><strong>From:</strong> Home Address <strong>To:</strong> Office</div>
+                  <div class="trip-datetime">Mar 25, 2025 - 08:00 AM</div>
+                </div>
+                <div class="trip-status cancelled">Cancelled</div>
+              </article>
             </div>
-            <div class="hero-bg-overlay"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <!-- END MAIN BOOKING VIEW -->
+
+
+  <!-- AGENCY DASHBOARD VIEW -->
+  <div id="view-agency-dashboard" class="view">
+    <header class="site-header">
+      <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+        <div class="logo" onclick="logout()" title="Logout">NGovRide Admin</div>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <span id="admin-display-name">Agency Admin</span>
+          <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button>
+        </div>
+      </div>
+    </header>
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar">
+        <nav class="sidebar-nav">
+          <ul>
+            <li><a href="#" class="active" onclick="showDashboardSection('dashboard-overview', this)">Overview</a></li>
+            <li><a href="#" onclick="showDashboardSection('dashboard-requests', this)">Manage Requests</a></li>
+            <li><a href="#" onclick="showDashboardSection('dashboard-trips', this)">Trip History</a></li>
+            <li><a href="#" onclick="showDashboardSection('dashboard-staff', this)">Manage Staff</a></li>
+            <li><a href="#" onclick="showDashboardSection('dashboard-reports', this)">Reports</a></li>
+            <li><a href="#" onclick="showDashboardSection('dashboard-settings', this)">Settings</a></li>
+          </ul>
+        </nav>
+      </aside>
+      <main class="dashboard-main">
+        <!-- Overview -->
+        <section id="dashboard-overview" class="dashboard-section active">
+          <h2>Agency Overview</h2>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <h4>Pending Requests</h4>
+              <p class="stat-value">5</p>
+              <small>Awaiting Action</small>
+            </div>
+            <div class="stat-card">
+              <h4>Active Trips</h4>
+              <p class="stat-value">2</p>
+              <small>In Progress</small>
+            </div>
+            <div class="stat-card">
+              <h4>Trips Today</h4>
+              <p class="stat-value">14</p>
+              <small>Completed</small>
+            </div>
+            <div class="stat-card">
+              <h4>Active Staff</h4>
+              <p class="stat-value">48</p>
+              <small>Authorized Users</small>
+            </div>
+          </div>
+          <div class="placeholder-widget">Trip Volume Chart Placeholder</div>
         </section>
-
-        <section class="features-section">
-            <h2 class="section-title">Facilitating Official Government Journeys</h2>
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon meeting-icon"></div>
-                    <h3>Ministry Meetings</h3>
-                    <p>Book reliable transport across Abuja (or relevant city) for inter-agency meetings and official appointments.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon airport-icon"></div>
-                    <h3>Airport Transfers</h3>
-                    <p>Schedule timely and official pickups or drop-offs for staff undertaking authorized travel.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon field-icon"></div>
-                    <h3>Field Visits &amp; Operations</h3>
-                    <p>Arrange necessary vehicles for essential site visits, project inspections, or community outreach programs.</p>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-icon secure-icon-v2"></div>
-                    <h3>Secure &amp; Accountable</h3>
-                    <p>Ensures platform access for verified staff only, tracks trip purposes, and uses official vehicles.</p>
-                </div>
-            </div>
+        <!-- Requests -->
+        <section id="dashboard-requests" class="dashboard-section">
+          <h2>Manage Trip Requests</h2>
+          <div class="controls">
+            <input type="search" placeholder="Search requests...">
+            <select>
+              <option>Filter by Status</option>
+              <option>Pending</option>
+              <option>Approved</option>
+            </select>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th>
+                  <th>Purpose</th><th>Status</th><th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aisha Bello</td>
+                  <td>Min. of Finance</td>
+                  <td>CBN HQ</td>
+                  <td>2025-04-01 10:00</td>
+                  <td>Budget Meeting</td>
+                  <td><span class="status-badge pending">Pending</span></td>
+                  <td>
+                    <button class="action-btn approve">Approve</button>
+                    <button class="action-btn reject">Reject</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Chinedu Okoro</td>
+                  <td>Fed Secretariat</td>
+                  <td>Airport</td>
+                  <td>2025-04-01 14:00</td>
+                  <td>Official Travel</td>
+                  <td><span class="status-badge approved">Approved</span></td>
+                  <td><button class="action-btn view">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
-
-        <footer class="homepage-footer">
-            <p>&copy; <script>document.write(new Date().getFullYear())</script> NGovRide Demo. Federal Government of Nigeria.</p>
-        </footer>
+        <!-- Trip History -->
+        <section id="dashboard-trips" class="dashboard-section">
+          <h2>Trip History</h2>
+          <div class="controls">
+            <input type="search" placeholder="Search trips...">
+            <input type="date">
+            <select>
+              <option>Filter by Status</option>
+              <option>Completed</option>
+              <option>Cancelled</option>
+            </select>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th>
+                  <th>Date/Time</th><th>Purpose</th><th>Status</th><th>Details</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Binta Mohammed</td>
+                  <td>NITDA</td>
+                  <td>Min. of Comms</td>
+                  <td>2025-03-30 15:00</td>
+                  <td>Stakeholder Mtg</td>
+                  <td><span class="status-badge completed">Completed</span></td>
+                  <td><button class="action-btn view">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- Manage Staff -->
+        <section id="dashboard-staff" class="dashboard-section">
+          <h2>Manage Agency Staff</h2>
+          <div class="controls">
+            <input type="search" placeholder="Search staff...">
+            <button class="action-btn add-new">Add New Staff</button>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr><th>Name</th><th>Email</th><th>Staff ID</th><th>Status</th><th>Action</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Aisha Bello</td>
+                  <td>a.bello@finance.gov.ng</td>
+                  <td>FIN/101</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn deactivate">Deactivate</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Chinedu Okoro</td>
+                  <td>c.okoro@finance.gov.ng</td>
+                  <td>FIN/102</td>
+                  <td><span class="status-badge active">Active</span></td>
+                  <td>
+                    <button class="action-btn edit">Edit</button>
+                    <button class="action-btn deactivate">Deactivate</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <!-- Reports -->
+        <section id="dashboard-reports" class="dashboard-section">
+          <h2>Reports &amp; Analytics</h2>
+          <div class="placeholder-widget">
+            Reporting dashboard placeholder. Requires backend data &amp; charting libraries.
+          </div>
+        </section>
+        <!-- Settings -->
+        <section id="dashboard-settings" class="dashboard-section">
+          <h2>Agency Settings</h2>
+          <div class="settings-form">
+            <div class="form-group">
+              <label>Agency Name</label>
+              <input type="text" value="Federal Ministry of Finance" disabled>
+            </div>
+            <div class="form-group">
+              <label>Primary Admin Contact</label>
+              <input type="text" value="Admin Name">
+            </div>
+            <div class="form-group">
+              <label>Notification Preferences</label>
+              <label><input type="checkbox" checked> Email on New Request</label>
+              <label><input type="checkbox"> Email on Trip Completion</label>
+            </div>
+            <button class="gradient-button"><span>Save Settings</span></button>
+          </div>
+        </section>
+      </main>
     </div>
+  </div>
+  <!-- END AGENCY DASHBOARD VIEW -->
 
-    <!-- ========== LOGIN VIEW ========== -->
-    <div id="view-login" class="view">
-        <div class="auth-container">
-            <div class="auth-logo">NGovRide</div>
-            <h2>Staff &amp; Admin Login</h2>
-            <form id="login-form" class="auth-form">
-                <div class="form-group">
-                    <label for="login-email">Official Email</label>
-                    <input type="email" id="login-email" required placeholder="e.g., user@agency.gov.ng">
-                </div>
-                <div class="form-group">
-                    <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required>
-                </div>
-                <button type="submit" class="gradient-button"><span>Login</span></button>
-            </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-register-staff')">Register as Staff</a> |
-                <a href="#" onclick="showView('view-register-agency')">Register Agency</a>
-                <br>
-                <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- ========== STAFF REGISTRATION VIEW ========== -->
-    <div id="view-register-staff" class="view">
-        <div class="auth-container">
-            <h2>Staff Registration</h2>
-            <form id="register-staff-form" class="auth-form">
-                <div class="form-group">
-                    <label for="staff-name">Full Name</label>
-                    <input type="text" id="staff-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-email">Official Email Address</label>
-                    <input type="email" id="staff-email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address">
-                    <small>Must end with .gov.ng</small>
-                </div>
-                <div class="form-group">
-                    <label for="staff-phone">Phone Number</label>
-                    <input type="tel" id="staff-phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-agency">Ministry / Department / Agency</label>
-                    <select id="staff-agency" required>
-                        <option value="" disabled selected>-- Select Your Agency --</option>
-                        <option>Federal Ministry of Finance</option>
-                        <option>Federal Ministry of Works</option>
-                        <option>Federal Ministry of Health</option>
-                        <option>NITDA</option>
-                        <option>FIRS</option>
-                        <option>CAC</option>
-                        <option>Nigeria Customs Service</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="staff-id">Staff ID Number</label>
-                    <input type="text" id="staff-id" required>
-                </div>
-                <div class="form-group">
-                    <label for="staff-password">Password</label>
-                    <input type="password" id="staff-password" required minlength="8">
-                    <small>Minimum 8 characters</small>
-                </div>
-                <div class="form-group">
-                    <label for="staff-confirm-password">Confirm Password</label>
-                    <input type="password" id="staff-confirm-password" required>
-                </div>
-                <button type="submit" class="gradient-button"><span>Register Staff</span></button>
-            </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a>
-            </div>
-        </div>
-    </div>
+  <!-- LOAD GOOGLE MAPS (Replace YOUR_API_KEY below) -->
+  <script 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBntUnZnhodtQ_mPHXjOC5CVhM1T5JC6y0&libraries=places,geometry,geocoding&callback=initMap" 
+    async defer>
+  </script>
 
-    <!-- ========== AGENCY REGISTRATION VIEW ========== -->
-    <div id="view-register-agency" class="view">
-        <div class="auth-container">
-            <h2>Agency Admin Registration</h2>
-            <form id="register-agency-form" class="auth-form">
-                <div class="form-group">
-                    <label for="agency-name">Ministry / Department / Agency Name</label>
-                    <input type="text" id="agency-name" required autocomplete="off">
-                    <div id="agency-suggestions" class="suggestions-dropdown"></div>
-                    <small>Select existing or type new name</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-name">Administrator Full Name</label>
-                    <input type="text" id="agency-admin-name" required>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-email">Administrator Official Email</label>
-                    <input type="email" id="agency-admin-email" required pattern=".+\.gov\.ng$" title="Must be a valid .gov.ng email address">
-                    <small>Must end with .gov.ng</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-admin-phone">Administrator Phone Number</label>
-                    <input type="tel" id="agency-admin-phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="agency-address">Official Address</label>
-                    <textarea id="agency-address" rows="2" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="agency-billing">Billing Contact / Info (Placeholder)</label>
-                    <input type="text" id="agency-billing" required placeholder="Contact for billing inquiries">
-                    <small>Details handled securely via backend.</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-password">Admin Account Password</label>
-                    <input type="password" id="agency-password" required minlength="8">
-                    <small>Minimum 8 characters</small>
-                </div>
-                <div class="form-group">
-                    <label for="agency-confirm-password">Confirm Password</label>
-                    <input type="password" id="agency-confirm-password" required>
-                </div>
-                <button type="submit" class="gradient-button"><span>Register Agency Admin</span></button>
-            </form>
-            <div class="auth-links">
-                <a href="#" onclick="showView('view-login')" class="back-link">&laquo; Back to Login</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== MAIN BOOKING VIEW ========== -->
-    <div id="view-main-booking" class="view">
-        <header class="site-header">
-            <div class="container">
-                <div class="logo" onclick="logout()" title="Logout">NGovRide</div>
-                <div class="user-info">
-                    <div id="user-photo-container" class="profile-photo-placeholder" title="Click to change photo">
-                        <input type="file" id="photo-upload" accept="image/*" style="display: none;">
-                    </div>
-                    <span id="user-display-name">User Name</span>
-                    <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button>
-                </div>
-            </div>
-        </header>
-        <main class="main-booking-layout">
-            <div id="map">
-                <div id="loading-indicator">Locating...</div>
-                <div id="map-instructions">Enter addresses above or click map</div>
-            </div>
-            <div class="ride-panel">
-                <div class="panel-tabs">
-                    <button id="tab-book" class="active" onclick="showPanel('booking')">Book Ride</button>
-                    <button id="tab-trips" onclick="showPanel('trips')">My Trips</button>
-                </div>
-
-                <div id="panel-booking" class="panel-content active">
-                    <section class="booking-form" aria-labelledby="booking-heading">
-                        <h2 id="booking-heading" style="display:none;">Book a Ride</h2>
-                        <form id="booking-form">
-                            <div class="form-group">
-                                <input type="text" id="pickup-address" required placeholder="Pickup Address">
-                                <button type="button" id="locate-btn" class="locate-button" title="Use Current Location">&#x1F4CD;</button>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" id="destination-address" required placeholder="Destination Address">
-                            </div>
-                            <div class="split-group">
-                                <div class="form-group">
-                                    <input type="datetime-local" id="trip-datetime" required title="Select trip date and time">
-                                </div>
-                                <div class="form-group">
-                                    <input type="number" id="passengers" required min="1" max="15" placeholder="Passengers" title="Number of Passengers">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <select id="vehicle-type" title="Select preferred vehicle type">
-                                    <option value="" disabled selected>Vehicle Type (Optional)</option>
-                                    <option value="any">Any Available</option>
-                                    <option value="sedan">Sedan Car (1-3)</option>
-                                    <option value="suv">SUV (4-6)</option>
-                                    <option value="bus">Bus (7-15)</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="trip-purpose" rows="2" required placeholder="Purpose of Trip"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <textarea id="trip-notes" rows="2" placeholder="Special Instructions / Notes (Optional)"></textarea>
-                            </div>
-                            <div class="estimation-box">
-                                <div>Distance: <span id="est-distance">--</span></div>
-                                <div>Est. Cost: <strong id="est-cost">--</strong></div>
-                                <small>(Based on route distance &amp; demo rate)</small>
-                            </div>
-                            <button type="submit" class="gradient-button submit-button"><span>Confirm &amp; Request Ride</span></button>
-                        </form>
-                    </section>
-                </div>
-
-                <div id="panel-trips" class="panel-content">
-                    <section class="trip-history" aria-labelledby="trip-history-heading">
-                        <h2 id="trip-history-heading" style="display:none;">Trip History</h2>
-                        <div class="trip-list">
-                            <article class="trip-card">
-                                <div class="trip-icon"></div>
-                                <div class="trip-details">
-                                    <div class="trip-locations"><strong>From:</strong> Min. of Works <strong>To:</strong> Aso Villa</div>
-                                    <div class="trip-datetime">Apr 05, 2025 - 10:00 AM</div>
-                                </div>
-                                <div class="trip-status upcoming">Upcoming</div>
-                            </article>
-                            <article class="trip-card">
-                                <div class="trip-icon"></div>
-                                <div class="trip-details">
-                                    <div class="trip-locations"><strong>From:</strong> Fed. Secretariat <strong>To:</strong> Airport</div>
-                                    <div class="trip-datetime">Mar 28, 2025 - 02:30 PM</div>
-                                </div>
-                                <div class="trip-status completed">Completed</div>
-                            </article>
-                            <article class="trip-card">
-                                <div class="trip-icon"></div>
-                                <div class="trip-details">
-                                    <div class="trip-locations"><strong>From:</strong> NITDA HQ <strong>To:</strong> Min. of Comms</div>
-                                    <div class="trip-datetime">Mar 30, 2025 - 03:45 PM</div>
-                                </div>
-                                <div class="trip-status inprogress">In Progress</div>
-                            </article>
-                            <article class="trip-card">
-                                <div class="trip-icon"></div>
-                                <div class="trip-details">
-                                    <div class="trip-locations"><strong>From:</strong> Home Address <strong>To:</strong> Office</div>
-                                    <div class="trip-datetime">Mar 25, 2025 - 08:00 AM</div>
-                                </div>
-                                <div class="trip-status cancelled">Cancelled</div>
-                            </article>
-                        </div>
-                    </section>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <!-- ========== AGENCY DASHBOARD VIEW ========== -->
-    <div id="view-agency-dashboard" class="view">
-        <header class="site-header">
-            <div class="container">
-                <div class="logo" onclick="logout()" title="Logout">NGovRide Admin</div>
-                <div class="user-info">
-                    <div id="admin-photo-container" class="profile-photo-placeholder" title="Admin Profile"></div>
-                    <span id="admin-display-name">Agency Admin</span>
-                    <button class="logout-btn" onclick="logout()" title="Logout">&#x27A4;</button>
-                </div>
-            </div>
-        </header>
-        <div class="dashboard-layout">
-            <aside class="dashboard-sidebar">
-                <nav class="sidebar-nav">
-                    <ul>
-                        <li><a href="#" class="active" onclick="showDashboardSection('dashboard-overview', this)">Overview</a></li>
-                        <li><a href="#" onclick="showDashboardSection('dashboard-requests', this)">Manage Requests</a></li>
-                        <li><a href="#" onclick="showDashboardSection('dashboard-trips', this)">Trip History</a></li>
-                        <li><a href="#" onclick="showDashboardSection('dashboard-staff', this)">Manage Staff</a></li>
-                        <li><a href="#" onclick="showDashboardSection('dashboard-reports', this)">Reports</a></li>
-                        <li><a href="#" onclick="showDashboardSection('dashboard-settings', this)">Settings</a></li>
-                    </ul>
-                </nav>
-            </aside>
-            <main class="dashboard-main">
-                <section id="dashboard-overview" class="dashboard-section active">
-                    <h2>Agency Overview</h2>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h4>Pending Requests</h4>
-                            <p class="stat-value">5</p>
-                            <small>Awaiting Action</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Active Trips</h4>
-                            <p class="stat-value">2</p>
-                            <small>Currently In Progress</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Trips Today</h4>
-                            <p class="stat-value">14</p>
-                            <small>Completed</small>
-                        </div>
-                        <div class="stat-card">
-                            <h4>Active Staff</h4>
-                            <p class="stat-value">48</p>
-                            <small>Authorized Users</small>
-                        </div>
-                    </div>
-                    <div class="placeholder-widget">Chart Placeholder: Trip Volume (Requires Charting Library &amp; Data)</div>
-                </section>
-                <section id="dashboard-requests" class="dashboard-section">
-                    <h2>Manage Trip Requests</h2>
-                    <div class="controls">
-                        <input type="search" placeholder="Search requests...">
-                        <select>
-                            <option>Filter by Status</option>
-                            <option>Pending</option>
-                            <option>Approved</option>
-                        </select>
-                    </div>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Action</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Aisha Bello</td>
-                                    <td>Min. of Finance</td>
-                                    <td>CBN HQ</td>
-                                    <td>2025-04-01 10:00</td>
-                                    <td>Budget Meeting</td>
-                                    <td><span class="status-badge pending">Pending</span></td>
-                                    <td>
-                                        <button class="action-btn approve">Approve</button>
-                                        <button class="action-btn reject">Reject</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Chinedu Okoro</td>
-                                    <td>Fed Secretariat</td>
-                                    <td>Airport</td>
-                                    <td>2025-04-01 14:00</td>
-                                    <td>Official Travel</td>
-                                    <td><span class="status-badge approved">Approved</span></td>
-                                    <td><button class="action-btn view">View</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <section id="dashboard-trips" class="dashboard-section">
-                    <h2>Trip History</h2>
-                    <div class="controls">
-                        <input type="search" placeholder="Search trips...">
-                        <input type="date">
-                        <select>
-                            <option>Filter by Status</option>
-                            <option>Completed</option>
-                            <option>Cancelled</option>
-                        </select>
-                    </div>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr><th>Staff Name</th><th>Pickup</th><th>Destination</th><th>Date/Time</th><th>Purpose</th><th>Status</th><th>Details</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Binta Mohammed</td>
-                                    <td>NITDA</td>
-                                    <td>Min. of Comms</td>
-                                    <td>2025-03-30 15:00</td>
-                                    <td>Stakeholder Mtg</td>
-                                    <td><span class="status-badge completed">Completed</span></td>
-                                    <td><button class="action-btn view">View</button></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <section id="dashboard-staff" class="dashboard-section">
-                    <h2>Manage Agency Staff</h2>
-                    <div class="controls">
-                        <input type="search" placeholder="Search staff...">
-                        <button class="action-btn add-new">Add New Staff</button>
-                    </div>
-                    <div class="table-container">
-                        <table>
-                            <thead>
-                                <tr><th>Name</th><th>Email</th><th>Staff ID</th><th>Status</th><th>Action</th></tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Aisha Bello</td>
-                                    <td>a.bello@finance.gov.ng</td>
-                                    <td>FIN/101</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="action-btn edit">Edit</button>
-                                        <button class="action-btn deactivate">Deactivate</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Chinedu Okoro</td>
-                                    <td>c.okoro@finance.gov.ng</td>
-                                    <td>FIN/102</td>
-                                    <td><span class="status-badge active">Active</span></td>
-                                    <td>
-                                        <button class="action-btn edit">Edit</button>
-                                        <button class="action-btn deactivate">Deactivate</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-                <section id="dashboard-reports" class="dashboard-section">
-                    <h2>Reports &amp; Analytics</h2>
-                    <div class="placeholder-widget">Reporting dashboard placeholder. Requires backend data &amp; charting libraries.</div>
-                </section>
-                <section id="dashboard-settings" class="dashboard-section">
-                    <h2>Agency Settings</h2>
-                    <div class="settings-form">
-                        <div class="form-group">
-                            <label>Agency Name</label>
-                            <input type="text" value="Federal Ministry of Finance" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label>Primary Admin Contact</label>
-                            <input type="text" value="Admin Name">
-                        </div>
-                        <div class="form-group">
-                            <label>Notification Preferences</label>
-                            <label><input type="checkbox" checked> Email on New Request</label>
-                            <label><input type="checkbox"> Email on Trip Completion</label>
-                        </div>
-                        <button class="gradient-button"><span>Save Settings</span></button>
-                    </div>
-                </section>
-            </main>
-        </div>
-    </div>
-
-    <!-- GOOGLE MAPS SCRIPT -->
-    <!-- Replace `YOUR_API_KEY` with your actual Google Maps JavaScript API key -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBntUnZnhodtQ_mPHXjOC5CVhM1T5JC6y0&libraries=places,geometry,geocoding&callback=initMap" async defer></script>
-
-    <script>
-    /* --------------------------------------------------------------
-       SINGLE-PAGE NAV LOGIC: showView(viewId)
-       Toggles which .view is visible
-    -------------------------------------------------------------- */
-    function showView(viewId) {
-      const views = document.querySelectorAll('.view');
-      views.forEach(v => {
-        v.classList.toggle('active', v.id === viewId);
-      });
-      window.scrollTo(0, 0);
-    }
-
-    /* 
-       Additional logic to toggle "panel" inside the booking section 
-       (Book Ride vs My Trips)
-    */
-    function showPanel(panelId) {
-      const bookingPanel = document.getElementById('panel-booking');
-      const tripsPanel = document.getElementById('panel-trips');
-      const tabBook = document.getElementById('tab-book');
-      const tabTrips = document.getElementById('tab-trips');
-
-      if (panelId === 'booking') {
-        bookingPanel.classList.add('active');
-        tripsPanel.classList.remove('active');
-        tabBook.classList.add('active');
-        tabTrips.classList.remove('active');
-      } else {
-        bookingPanel.classList.remove('active');
-        tripsPanel.classList.add('active');
-        tabBook.classList.remove('active');
-        tabTrips.classList.add('active');
-      }
-    }
-
-    /*
-       Agency Dashboard: Switch sections (Overview, Requests, Trips, etc.)
-       by toggling .active on .dashboard-section 
-    */
-    function showDashboardSection(sectionId, clickedLink) {
-      const dashboardSections = document.querySelectorAll('.dashboard-section');
-      dashboardSections.forEach(sec => {
-        sec.classList.toggle('active', sec.id === sectionId);
-      });
-      // Mark the clicked nav link as active
-      const allSidebarLinks = document.querySelectorAll('.sidebar-nav li a');
-      allSidebarLinks.forEach(link => link.classList.remove('active'));
-      if (clickedLink) clickedLink.classList.add('active');
-    }
-
-    /* 
-       MAP + BOOKING LOGIC (similar to previous code)
-       We'll keep the relevant global variables & functions 
-    */
-    let map, geocoder, directionsService, directionsRenderer;
-    let autocompletePickup, autocompleteDest;
-    let pickupMarker = null;
-    let destMarker = null;
-    let pickupCoords = null;
-    let destCoords = null;
-    let userLocationCircle = null;
-    const DUMMY_RATE_PER_KM = 150;
-    const NIGERIA_CENTER = { lat: 9.0765, lng: 7.3986 }; // Abuja
-    const DEFAULT_ZOOM = 13;
-
-    window.initMap = function() {
-      const mapEl = document.getElementById('map');
-      if (!mapEl) {
-        console.error("Map element not found.");
-        return;
-      }
-      map = new google.maps.Map(mapEl, {
-        center: NIGERIA_CENTER,
-        zoom: DEFAULT_ZOOM,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: false,
-      });
-      geocoder = new google.maps.Geocoder();
-      directionsService = new google.maps.DirectionsService();
-      directionsRenderer = new google.maps.DirectionsRenderer({
-        map: map,
-        suppressMarkers: true,
-        polylineOptions: {
-          strokeColor: '#006633',
-          strokeOpacity: 0.8,
-          strokeWeight: 6
-        }
-      });
-      setupAutocomplete();
-      setupMapListeners();
-      console.log("Google Map initialized.");
-    };
-
-    function setupAutocomplete() {
-      const pickupInput = document.getElementById('pickup-address');
-      const destInput = document.getElementById('destination-address');
-      if (!pickupInput || !destInput) return;
-      const options = {
-        componentRestrictions: { country: 'ng' },
-        fields: ["formatted_address", "geometry", "name"],
-        strictBounds: false,
-      };
-      autocompletePickup = new google.maps.places.Autocomplete(pickupInput, options);
-      autocompleteDest = new google.maps.places.Autocomplete(destInput, options);
-
-      autocompletePickup.addListener('place_changed', () => handlePlaceChanged(autocompletePickup, 'pickup'));
-      autocompleteDest.addListener('place_changed', () => handlePlaceChanged(autocompleteDest, 'destination'));
-
-      // Prevent form submission on Enter in the address fields
-      const preventSubmit = e => { if (e.key === 'Enter') e.preventDefault(); };
-      pickupInput.addEventListener('keydown', preventSubmit);
-      destInput.addEventListener('keydown', preventSubmit);
-    }
-
-    function setupMapListeners() {
-      if (!map) return;
-      google.maps.event.clearListeners(map, 'click');
-      map.addListener('click', handleMapClick);
-    }
-
-    function handlePlaceChanged(autocompleteInstance, type) {
-      const place = autocompleteInstance.getPlace();
-      if (!place.geometry || !place.geometry.location) return;
-      if (place.geometry.viewport) map.fitBounds(place.geometry.viewport);
-      else { map.setCenter(place.geometry.location); map.setZoom(16); }
-      const loc = place.geometry.location;
-      const addr = place.formatted_address || place.name;
-      if (type === 'pickup') {
-        pickupCoords = loc;
-        document.getElementById('pickup-address').value = addr;
-        updateMarker(loc, addr, 'pickup');
-      } else {
-        destCoords = loc;
-        document.getElementById('destination-address').value = addr;
-        updateMarker(loc, addr, 'destination');
-      }
-      updateRouteAndEstimation();
-    }
-
-    function handleMapClick(event) {
-      const clickedLatLng = event.latLng;
-      if (!clickedLatLng || !geocoder) return;
-      showLoading();
-      geocoder.geocode({ location: clickedLatLng }, (results, status) => {
-        hideLoading();
-        if (status === 'OK' && results && results[0]) {
-          const address = results[0].formatted_address;
-          if (!pickupCoords || (pickupCoords && destCoords)) {
-            pickupCoords = clickedLatLng;
-            destCoords = null;
-            document.getElementById('pickup-address').value = address;
-            document.getElementById('destination-address').value = '';
-            updateMarker(clickedLatLng, address, 'pickup');
-            if (destMarker) destMarker.setMap(null); destMarker = null;
-          } else {
-            destCoords = clickedLatLng;
-            document.getElementById('destination-address').value = address;
-            updateMarker(clickedLatLng, address, 'destination');
-          }
-          updateRouteAndEstimation();
-        } else {
-          alert("No address found at that point.");
-        }
-      });
-    }
-
-    function updateMarker(location, address, type) {
-      if (!map) return;
-      let marker = (type === 'pickup') ? pickupMarker : destMarker;
-      const title = (type === 'pickup') ? 'Pickup Location' : 'Destination Location';
-      const iconFill = (type === 'pickup') ? '%23006633' : '%23CC0000';
-      const iconUrl = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="${iconFill}" viewBox="0 0 24 24" width="30px" height="30px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>`;
-      const markerOptions = {
-        position: location,
-        map: map,
-        title,
-        draggable: true,
-        icon: { url: iconUrl },
-      };
-      if (marker) marker.setPosition(location);
-      else marker = new google.maps.Marker(markerOptions);
-
-      google.maps.event.clearInstanceListeners(marker);
-      const infoWindow = new google.maps.InfoWindow({ content: `<b>${title}</b><br>${address}` });
-      marker.addListener('click', () => infoWindow.open(map, marker));
-      marker.addListener('dragend', () => {
-        const newPos = marker.getPosition();
-        if (!newPos) return;
-        showLoading();
-        geocoder.geocode({ location: newPos }, (res, stat) => {
-          hideLoading();
-          let newAddr = `(${newPos.lat().toFixed(4)}, ${newPos.lng().toFixed(4)})`;
-          if (stat === 'OK' && res && res[0]) {
-            newAddr = res[0].formatted_address;
-          }
-          if (type === 'pickup') {
-            pickupCoords = newPos;
-            document.getElementById('pickup-address').value = newAddr;
-          } else {
-            destCoords = newPos;
-            document.getElementById('destination-address').value = newAddr;
-          }
-          updateRouteAndEstimation();
-        });
-      });
-      if (type === 'pickup') pickupMarker = marker; else destMarker = marker;
-    }
-
-    function clearMarkersAndRoute() {
-      if (pickupMarker) pickupMarker.setMap(null); pickupMarker = null;
-      if (destMarker) destMarker.setMap(null); destMarker = null;
-      if (directionsRenderer) directionsRenderer.setDirections({ routes: [] });
-      pickupCoords = null;
-      destCoords = null;
-    }
-
-    function updateRouteAndEstimation() {
-      const distEl = document.getElementById('est-distance');
-      const costEl = document.getElementById('est-cost');
-      if (!pickupCoords || !destCoords || !directionsService || !directionsRenderer) {
-        if (directionsRenderer) directionsRenderer.setDirections({ routes: [] });
-        distEl.textContent = '--';
-        costEl.textContent = '--';
-        return;
-      }
-      showLoading();
-      const request = {
-        origin: pickupCoords,
-        destination: destCoords,
-        travelMode: google.maps.TravelMode.DRIVING
-      };
-      directionsService.route(request, (result, status) => {
-        hideLoading();
-        if (status === 'OK' && result) {
-          directionsRenderer.setDirections(result);
-          const route = result.routes[0];
-          if (route && route.legs && route.legs[0]) {
-            const leg = route.legs[0];
-            const distanceText = leg.distance?.text || '--';
-            const durationText = leg.duration?.text || '--';
-            const distanceValueKm = (leg.distance?.value || 0) / 1000;
-            const estimatedCost = distanceValueKm * DUMMY_RATE_PER_KM;
-            distEl.textContent = distanceText;
-            costEl.textContent = `₦${estimatedCost.toFixed(0)} (${durationText})`;
-          }
-        } else {
-          alert("Could not calculate route.");
-          directionsRenderer.setDirections({ routes: [] });
-          distEl.textContent = '--';
-          costEl.textContent = '--';
-        }
-      });
-    }
-
-    function showLoading() {
-      const ld = document.getElementById('loading-indicator');
-      if (ld) ld.style.display = 'block';
-    }
-    function hideLoading() {
-      const ld = document.getElementById('loading-indicator');
-      if (ld) ld.style.display = 'none';
-    }
-
-    /* 
-       Simple DEMO login / registration / booking handling 
-       (No actual backend in this single-page prototype)
-    */
-    function logout() {
-      console.log("Logging out (demo)...");
-      // reset user placeholders
-      const userDisplay = document.getElementById('user-display-name');
-      const adminDisplay = document.getElementById('admin-display-name');
-      if (userDisplay) userDisplay.textContent = 'User Name';
-      if (adminDisplay) adminDisplay.textContent = 'Agency Admin';
-      // remove profile images
-      const userPhoto = document.getElementById('user-photo-container');
-      if (userPhoto) userPhoto.style.backgroundImage = '';
-      // clear map markers
-      clearMarkersAndRoute();
-      if (userLocationCircle) userLocationCircle.setMap(null);
-      userLocationCircle = null;
-      // show homepage
-      showView('view-homepage');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-      // handle form submittal for login
-      document.getElementById('login-form')?.addEventListener('submit', e => {
-        e.preventDefault();
-        alert("Logged in (demo). Taking you to booking or admin...");
-        const email = (document.getElementById('login-email')?.value || '').toLowerCase();
-        // Basic condition: if email includes '@finance.gov.ng' or '@nitda.gov.ng', treat as staff
-        if (email.includes('@finance.gov.ng') || email.includes('@nitda.gov.ng')) {
-          showView('view-main-booking');
-        } else {
-          // else show admin
-          showView('view-agency-dashboard');
-        }
-      });
-
-      // register staff
-      document.getElementById('register-staff-form')?.addEventListener('submit', e => {
-        e.preventDefault();
-        alert("Staff registered (demo). Back to login...");
-        showView('view-login');
-      });
-
-      // register agency
-      document.getElementById('register-agency-form')?.addEventListener('submit', e => {
-        e.preventDefault();
-        alert("Agency registered (demo). Back to login...");
-        showView('view-login');
-      });
-
-      // booking form submission
-      document.getElementById('booking-form')?.addEventListener('submit', e => {
-        e.preventDefault();
-        if (!pickupCoords || !destCoords) {
-          alert("Please set pickup and destination first!");
-          return;
-        }
-        alert("Booking request submitted (demo).");
-      });
-
-      // locate me button
-      document.getElementById('locate-btn')?.addEventListener('click', () => {
-        if (!navigator.geolocation) {
-          alert("Geolocation not supported.");
-          return;
-        }
-        showLoading();
-        navigator.geolocation.getCurrentPosition(pos => {
-          hideLoading();
-          const latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-          map.setCenter(latLng);
-          map.setZoom(16);
-          if (userLocationCircle) userLocationCircle.setMap(null);
-          userLocationCircle = new google.maps.Circle({
-            map, 
-            center: latLng, 
-            radius: pos.coords.accuracy,
-            fillColor: '#006633', 
-            fillOpacity: 0.1, 
-            strokeColor: '#006633', 
-            strokeOpacity: 0.4, 
-            strokeWeight: 2
-          });
-          geocoder.geocode({ location: latLng }, (results, status) => {
-            let address = `Current Location (${pos.coords.latitude.toFixed(4)}, ${pos.coords.longitude.toFixed(4)})`;
-            if (status === 'OK' && results && results[0]) {
-              address = results[0].formatted_address;
-            }
-            document.getElementById('pickup-address').value = address;
-            pickupCoords = latLng;
-            updateMarker(latLng, address, 'pickup');
-            if (destMarker) destMarker.setMap(null); 
-            destMarker = null; 
-            destCoords = null;
-            document.getElementById('destination-address').value = '';
-            updateRouteAndEstimation();
-          });
-        }, err => {
-          hideLoading();
-          alert("Could not get your location.");
-          console.error(err);
-        }, { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 });
-      });
-
-      // Basic staff agency suggestions (demo)
-      const existingAgencies = [
-        "Federal Ministry of Finance", "Federal Ministry of Works", "Federal Ministry of Health",
-        "Federal Ministry of Education", "Federal Ministry of Agriculture", "Federal Ministry of Justice",
-        "NITDA", "FIRS", "CAC", "Nigeria Customs Service", "NIMASA", "NPA", "EFCC", "ICPC",
-        "Budget Office of the Federation"
-      ];
-      const agencyNameInput = document.getElementById('agency-name');
-      const agencySuggest = document.getElementById('agency-suggestions');
-      agencyNameInput?.addEventListener('input', e => {
-        const val = e.target.value.toLowerCase();
-        if (val.length < 2) {
-          agencySuggest.style.display = 'none';
-          return;
-        }
-        const filtered = existingAgencies.filter(ag => ag.toLowerCase().includes(val));
-        agencySuggest.innerHTML = '';
-        if (!filtered.length) {
-          agencySuggest.style.display = 'none';
-          return;
-        }
-        filtered.forEach(ag => {
-          const div = document.createElement('div');
-          div.textContent = ag;
-          div.addEventListener('click', () => {
-            agencyNameInput.value = ag;
-            agencySuggest.style.display = 'none';
-          });
-          agencySuggest.appendChild(div);
-        });
-        agencySuggest.style.display = 'block';
-      });
-      document.addEventListener('click', e => {
-        if (agencySuggest && !agencyNameInput.contains(e.target) && !agencySuggest.contains(e.target)) {
-          agencySuggest.style.display = 'none';
-        }
-      });
-
-      // Photo upload (demo)
-      const photoFileInput = document.getElementById('photo-upload');
-      const userPhotoContainer = document.getElementById('user-photo-container');
-      const adminPhotoContainer = document.getElementById('admin-photo-container');
-      userPhotoContainer?.addEventListener('click', () => photoFileInput?.click());
-      adminPhotoContainer?.addEventListener('click', () => alert("Admin photo upload not implemented in demo."));
-      photoFileInput?.addEventListener('change', e => {
-        const file = e.target.files[0];
-        if (file && file.type.startsWith('image/')) {
-          const reader = new FileReader();
-          reader.onload = evt => {
-            // set background image
-            userPhotoContainer.style.backgroundImage = `url('${evt.target.result}')`;
-          };
-          reader.readAsDataURL(file);
-        }
-        e.target.value = '';
-      });
-
-      console.log("DOM ready. Single-page NGovRide demo loaded.");
+  <script>
+  /* -----------------------------------------------------
+     SINGLE-PAGE NAV & DASHBOARD SECTION SWITCHING
+  ----------------------------------------------------- */
+  function showView(viewId) {
+    const views = document.querySelectorAll('.view');
+    views.forEach(v => {
+      v.classList.toggle('active', v.id===viewId);
     });
-    </script>
+    window.scrollTo(0, 0);
+  }
+  function showPanel(panelId) {
+    const panelBooking = document.getElementById('panel-booking');
+    const panelTrips = document.getElementById('panel-trips');
+    const tabBook = document.getElementById('tab-book');
+    const tabTrips = document.getElementById('tab-trips');
+    if (panelId==='booking') {
+      panelBooking.classList.add('active');
+      panelTrips.classList.remove('active');
+      tabBook.classList.add('active');
+      tabTrips.classList.remove('active');
+    } else {
+      panelBooking.classList.remove('active');
+      panelTrips.classList.add('active');
+      tabBook.classList.remove('active');
+      tabTrips.classList.add('active');
+    }
+  }
+  function showDashboardSection(sectionId, clickedLink) {
+    const sections = document.querySelectorAll('.dashboard-section');
+    sections.forEach(sec => {
+      sec.classList.toggle('active', sec.id===sectionId);
+    });
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav li a');
+    sidebarLinks.forEach(link => link.classList.remove('active'));
+    if (clickedLink) clickedLink.classList.add('active');
+  }
+
+  /* -----------------------------------------------------
+     GLOBAL MAP / BOOKING VARS
+  ----------------------------------------------------- */
+  let map, geocoder, directionsService, directionsRenderer;
+  let pickupMarker = null, destMarker = null;
+  let pickupCoords = null, destCoords = null;
+  let userLocationCircle = null;
+  const NIGERIA_CENTER = { lat: 9.0765, lng: 7.3986 };
+  const DEFAULT_ZOOM = 13;
+  const DUMMY_RATE_PER_KM = 150; // Naira rate for cost calculation
+
+  // Track which agency the user "belongs" to
+  let currentUserAgency = null;
+
+  // Example data: multi-agency fleet with location & availability
+  const allCars = [
+    {
+      agency: "Federal Ministry of Finance",
+      lat: 9.0760, lng: 7.3970,
+      available: true, driverName: "Driver F1", plateNumber: "FIN-001"
+    },
+    {
+      agency: "Federal Ministry of Finance",
+      lat: 9.0770, lng: 7.3950,
+      available: false, // not available
+      driverName: "Driver F2", plateNumber: "FIN-002"
+    },
+    {
+      agency: "NITDA",
+      lat: 9.08, lng: 7.405,
+      available: true, driverName: "Driver N1", plateNumber: "NIT-001"
+    },
+    {
+      agency: "Federal Ministry of Works",
+      lat: 9.075, lng: 7.39,
+      available: true, driverName: "Driver W1", plateNumber: "WRK-010"
+    }
+  ];
+  let carMarkers = []; // We keep references to car markers on the map
+
+  /* -----------------------------------------------------
+     MAP INIT
+  ----------------------------------------------------- */
+  window.initMap = () => {
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return;
+    map = new google.maps.Map(mapEl, {
+      center: NIGERIA_CENTER,
+      zoom: DEFAULT_ZOOM,
+      mapTypeControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+    });
+    geocoder = new google.maps.Geocoder();
+    directionsService = new google.maps.DirectionsService();
+    directionsRenderer = new google.maps.DirectionsRenderer({
+      map,
+      suppressMarkers: true,
+      preserveViewport: false,
+      polylineOptions: {
+        strokeColor: '#006633',
+        strokeOpacity:0.8,
+        strokeWeight:6
+      }
+    });
+
+    setupAutocomplete();
+    map.addListener('click', handleMapClick);
+    console.log("Google Map initialized.");
+  };
+  function setupAutocomplete() {
+    const pickupInput = document.getElementById('pickup-address');
+    const destInput = document.getElementById('destination-address');
+    if(!pickupInput||!destInput) return;
+    const options = {
+      componentRestrictions:{ country:'ng' },
+      fields:["formatted_address","geometry","name"]
+    };
+    const autoPickup = new google.maps.places.Autocomplete(pickupInput, options);
+    const autoDest = new google.maps.places.Autocomplete(destInput, options);
+
+    autoPickup.addListener('place_changed', ()=>{
+      const place = autoPickup.getPlace();
+      if(!place.geometry) return;
+      pickupCoords = place.geometry.location;
+      if(place.geometry.viewport) map.fitBounds(place.geometry.viewport);
+      else map.setCenter(pickupCoords);
+      updateMarker(pickupCoords, place.formatted_address, 'pickup');
+      updateRouteAndEstimation();
+    });
+    autoDest.addListener('place_changed', ()=>{
+      const place = autoDest.getPlace();
+      if(!place.geometry) return;
+      destCoords = place.geometry.location;
+      if(place.geometry.viewport) map.fitBounds(place.geometry.viewport);
+      else map.setCenter(destCoords);
+      updateMarker(destCoords, place.formatted_address, 'destination');
+      updateRouteAndEstimation();
+    });
+  }
+
+  /* -----------------------------------------------------
+     MAP MARKERS & DISTANCE
+  ----------------------------------------------------- */
+  function handleMapClick(e) {
+    const latLng = e.latLng;
+    if(!latLng||!geocoder) return;
+    showLoading();
+    geocoder.geocode({ location: latLng }, (results, status)=>{
+      hideLoading();
+      if(status==='OK' && results && results[0]) {
+        const address = results[0].formatted_address;
+        if(!pickupCoords || (pickupCoords && destCoords)) {
+          // set as pickup
+          pickupCoords = latLng;
+          destCoords = null;
+          document.getElementById('pickup-address').value = address;
+          document.getElementById('destination-address').value = '';
+          updateMarker(latLng,address,'pickup');
+          if(destMarker) {destMarker.setMap(null); destMarker=null;}
+        } else {
+          // set as destination
+          destCoords = latLng;
+          document.getElementById('destination-address').value = address;
+          updateMarker(latLng, address, 'destination');
+        }
+        updateRouteAndEstimation();
+      }
+    });
+  }
+  function updateMarker(location, address, type) {
+    const iconFill = (type==='pickup') ? '%23006633' : '%23CC0000';
+    const iconUrl = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="${iconFill}" viewBox="0 0 24 24" width="30px" height="30px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>`;
+    const opts = {
+      position: location,
+      map,
+      icon: { url: iconUrl },
+      draggable:true
+    };
+    let marker = (type==='pickup') ? pickupMarker : destMarker;
+    if(marker) marker.setPosition(location);
+    else marker = new google.maps.Marker(opts);
+
+    google.maps.event.clearInstanceListeners(marker);
+    const infoWindow = new google.maps.InfoWindow({ content:`<b>${type} Location</b><br>${address}`});
+    marker.addListener('click', ()=> infoWindow.open(map, marker));
+    marker.addListener('dragend', ()=>{
+      const newPos = marker.getPosition();
+      showLoading();
+      geocoder.geocode({location:newPos},(res,stat)=>{
+        hideLoading();
+        let newAddr = `${newPos.lat().toFixed(4)}, ${newPos.lng().toFixed(4)}`;
+        if(stat==='OK' && res && res[0]) newAddr=res[0].formatted_address;
+        if(type==='pickup'){
+          pickupCoords=newPos;
+          document.getElementById('pickup-address').value=newAddr;
+        } else {
+          destCoords=newPos;
+          document.getElementById('destination-address').value=newAddr;
+        }
+        updateRouteAndEstimation();
+      });
+    });
+
+    if(type==='pickup') pickupMarker=marker; else destMarker=marker;
+  }
+  function updateRouteAndEstimation() {
+    const distEl = document.getElementById('est-distance');
+    const costEl = document.getElementById('est-cost');
+    if(!pickupCoords || !destCoords || !directionsRenderer) {
+      directionsRenderer.setDirections({ routes: [] });
+      distEl.textContent='--';
+      costEl.textContent='--';
+      return;
+    }
+    showLoading();
+    directionsService.route({
+      origin:pickupCoords,
+      destination:destCoords,
+      travelMode: google.maps.TravelMode.DRIVING
+    },(result,status)=>{
+      hideLoading();
+      if(status==='OK' && result?.routes[0]){
+        directionsRenderer.setDirections(result);
+        const leg=result.routes[0].legs[0];
+        const distText=leg.distance?.text||'--';
+        const durText=leg.duration?.text||'--';
+        distEl.textContent=distText;
+        const km=(leg.distance?.value||0)/1000;
+        const cost=km*DUMMY_RATE_PER_KM;
+        costEl.textContent=`₦${cost.toFixed(0)} (${durText})`;
+      } else {
+        directionsRenderer.setDirections({ routes:[] });
+        distEl.textContent='--';
+        costEl.textContent='--';
+      }
+    });
+  }
+
+  /* -----------------------------------------------------
+     CAR SEARCH SIMULATION
+  ----------------------------------------------------- */
+  function simulateSearchAndAssignCar() {
+    // Show overlay
+    const overlay=document.getElementById('search-overlay');
+    overlay.textContent="Searching for an available car from your agency...";
+    overlay.classList.add('show');
+
+    // Filter cars from user agency
+    let candidateCars = allCars.filter(c => c.agency===currentUserAgency && c.available);
+    if(candidateCars.length===0) {
+      overlay.textContent="No cars available in your agency. Checking other agencies...";
+      // fallback to other agencies
+      candidateCars=allCars.filter(c=> c.available && c.agency!==currentUserAgency);
+    }
+    if(candidateCars.length===0) {
+      // no cars at all
+      setTimeout(()=>{
+        overlay.classList.remove('show');
+        alert("No cars available in any agency. Try again later.");
+      },2000);
+      return;
+    }
+
+    // place markers
+    placeCarMarkers(candidateCars);
+
+    // short delay -> success
+    setTimeout(()=>{
+      overlay.textContent="Driver found! Assigning...";
+      const assignedCar = candidateCars[0]; 
+      assignedCar.available=false; 
+      // remove from future searching?
+
+      setTimeout(()=>{
+        overlay.classList.remove('show');
+        alert(`Success! ${assignedCar.driverName} (${assignedCar.plateNumber}) from ${assignedCar.agency} accepted your ride.`);
+      },1500);
+
+    }, 3000);
+  }
+  function placeCarMarkers(carList) {
+    // clear old
+    carMarkers.forEach(m => m.setMap(null));
+    carMarkers=[];
+    carList.forEach(car=>{
+      const iconUrl='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23009000" viewBox="0 0 24 24" width="26px" height="26px"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>';
+      const marker=new google.maps.Marker({
+        position:{lat:car.lat,lng:car.lng},
+        map,
+        title:`${car.driverName} - ${car.plateNumber} (${car.agency})`,
+        icon:{ url: iconUrl }
+      });
+      const info=new google.maps.InfoWindow({
+        content:`<b>${car.driverName}</b><br>Plate: ${car.plateNumber}<br>Agency: ${car.agency}`
+      });
+      marker.addListener('click',()=> info.open(map, marker));
+      carMarkers.push(marker);
+    });
+  }
+
+  /* -----------------------------------------------------
+     UI HELPERS
+  ----------------------------------------------------- */
+  function showLoading() {
+    const ld=document.getElementById('loading-indicator');
+    if(ld) ld.style.display='block';
+  }
+  function hideLoading() {
+    const ld=document.getElementById('loading-indicator');
+    if(ld) ld.style.display='none';
+  }
+  function logout() {
+    currentUserAgency=null;
+    showView('view-homepage');
+  }
+
+  /* -----------------------------------------------------
+     DOMContentLoaded -> Setup Listeners
+  ----------------------------------------------------- */
+  document.addEventListener('DOMContentLoaded', ()=>{
+    // Staff Registration
+    document.getElementById('register-staff-form')?.addEventListener('submit', e=>{
+      e.preventDefault();
+      // pretend we store user
+      const userName=document.getElementById('staff-name').value;
+      currentUserAgency=document.getElementById('staff-agency').value;
+      alert(`Staff registered (demo). Now logged in as ${userName}, Agency: ${currentUserAgency}`);
+      document.getElementById('user-display-name').textContent = userName || "Staff User";
+      showView('view-main-booking');
+    });
+    // Agency Registration
+    document.getElementById('register-agency-form')?.addEventListener('submit', e=>{
+      e.preventDefault();
+      alert("Agency admin registered (demo). Loading Agency Dashboard...");
+      showView('view-agency-dashboard');
+    });
+    // Login
+    document.getElementById('login-form')?.addEventListener('submit', e=>{
+      e.preventDefault();
+      const email=document.getElementById('login-email').value.toLowerCase();
+      if(email.includes('finance.gov.ng')) currentUserAgency="Federal Ministry of Finance";
+      else if(email.includes('nitda.gov.ng')) currentUserAgency="NITDA";
+      else if(email.includes('works.gov.ng')) currentUserAgency="Federal Ministry of Works";
+      else currentUserAgency="Federal Ministry of Health"; 
+      alert(`Logged in (demo). Agency: ${currentUserAgency}`);
+      document.getElementById('user-display-name').textContent=`Staff (${currentUserAgency})`;
+      showView('view-main-booking');
+    });
+    // Booking Form
+    document.getElementById('booking-form')?.addEventListener('submit', e=>{
+      e.preventDefault();
+      if(!pickupCoords||!destCoords){
+        alert("Please set pickup & destination first.");
+        return;
+      }
+      if(!currentUserAgency){
+        alert("No agency found. (Not logged in?)");
+        return;
+      }
+      // start the "car searching" simulation
+      simulateSearchAndAssignCar();
+    });
+    // Locate Button
+    document.getElementById('locate-btn')?.addEventListener('click',()=>{
+      if(!navigator.geolocation){
+        alert("Geolocation not supported.");
+        return;
+      }
+      showLoading();
+      navigator.geolocation.getCurrentPosition(pos=>{
+        hideLoading();
+        const latLng=new google.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+        map.setCenter(latLng); map.setZoom(16);
+        if(userLocationCircle) userLocationCircle.setMap(null);
+        userLocationCircle=new google.maps.Circle({
+          map, center:latLng, radius:pos.coords.accuracy,
+          fillColor:'#006633', fillOpacity:0.1,
+          strokeColor:'#006633', strokeOpacity:0.4, strokeWeight:2
+        });
+        geocoder.geocode({location:latLng},(res,stat)=>{
+          let address = `Current Location (${pos.coords.latitude.toFixed(4)},${pos.coords.longitude.toFixed(4)})`;
+          if(stat==='OK' && res && res[0]) address=res[0].formatted_address;
+          pickupCoords=latLng;
+          document.getElementById('pickup-address').value=address;
+          updateMarker(latLng,address,'pickup');
+          destCoords=null;
+          document.getElementById('destination-address').value='';
+          if(destMarker){destMarker.setMap(null); destMarker=null;}
+          updateRouteAndEstimation();
+        });
+      },err=>{
+        hideLoading();
+        alert("Could not get your location. Check permissions.");
+      },{enableHighAccuracy:true,timeout:10000,maximumAge:0});
+    });
+  });
+  </script>
+
 </body>
 </html>
